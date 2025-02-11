@@ -1,0 +1,102 @@
+[gd_scene load_steps=5 format=3 uid="uid://pwfbfeehxdsv"]
+
+[ext_resource type="Script" path="res://menu/seleção_de_personagem.gd" id="1_3l1yv"]
+[ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="2_0dscy"]
+[ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="2_fy3qk"]
+[ext_resource type="Texture2D" uid="uid://ke2xdot4tjc4" path="res://textures/spritesdeboneco/player_carson.png" id="3_bny6r"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3l1yv")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
+scale = Vector2(40000, 40000)
+texture = ExtResource("2_fy3qk")
+region_enabled = true
+region_rect = Rect2(-5000, -5000, 5000, 5000)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(336, 180)
+scale = Vector2(4, 4)
+texture = ExtResource("3_bny6r")
+hframes = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 13.0
+offset_right = 569.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("2_0dscy")
+theme_override_font_sizes/font_size = 36
+text = "Selecione a dificuldade"
+
+[node name="labeldocoaglo" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 340.0
+offset_top = 330.0
+offset_right = 629.0
+offset_bottom = 353.0
+theme_override_fonts/font = ExtResource("2_0dscy")
+theme_override_font_sizes/font_size = 22
+text = "Indisponivel no momento"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 288.0
+offset_right = 493.0
+offset_bottom = 328.0
+
+[node name="Facilneedle" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0dscy")
+theme_override_font_sizes/font_size = 25
+text = "Facil"
+
+[node name="Medioneedle" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0dscy")
+theme_override_font_sizes/font_size = 25
+text = "Medio"
+
+[node name="Dificilneedle" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0dscy")
+theme_override_font_sizes/font_size = 25
+text = "Dificil"
+
+[node name="labeldocoaglo2" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 340.0
+offset_top = 330.0
+offset_right = 629.0
+offset_bottom = 353.0
+theme_override_fonts/font = ExtResource("2_0dscy")
+theme_override_font_sizes/font_size = 22
+text = "Indisponivel no momento"
+
+[node name="Timerneedle" type="Timer" parent="."]
+
+[node name="voltarneedle" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("2_0dscy")
+theme_override_font_sizes/font_size = 35
+text = "<--"
+
+[connection signal="pressed" from="HBoxContainer/Facilneedle" to="." method="_on_facilneedle_pressed"]
+[connection signal="pressed" from="HBoxContainer/Medioneedle" to="." method="_on_medioneedle_pressed"]
+[connection signal="pressed" from="HBoxContainer/Dificilneedle" to="." method="_on_dificilneedle_pressed"]
+[connection signal="timeout" from="Timerneedle" to="." method="_on_timerneedle_timeout"]
+[connection signal="pressed" from="voltarneedle" to="." method="_on_voltarneedle_pressed"]

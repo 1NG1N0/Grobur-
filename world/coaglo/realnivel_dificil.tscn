@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb4agvso0kql1"]
+
+[ext_resource type="PackedScene" uid="uid://b3jgt8aec1jxv" path="res://world/Medula ossea/nivel_dificil_charles.tscn" id="1_bwpvl"]
+
+[node name="NivelDificil" instance=ExtResource("1_bwpvl")]
+
+[node name="Player" parent="." index="3"]
+player_tipe = "Coaglo"

@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctboo5dnyryhe"]
+
+[ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="1_i2shq"]
+[ext_resource type="Script" path="res://menu/Explicacao.gd" id="1_qkufl"]
+[ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="2_7hq6l"]
+[ext_resource type="Texture2D" uid="uid://c7s8b22nfo1m" path="res://menu/pixil-frame-0 (28).png" id="4_85ddd"]
+[ext_resource type="Texture2D" uid="uid://dqc1mq3v7t4c4" path="res://covid19/porquinho_oinc_oinc_demoniaco.png" id="4_ca4bn"]
+[ext_resource type="Texture2D" uid="uid://be0n106lyupy2" path="res://menu/pixil-frame-0 (30).png" id="5_25qqx"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qkufl")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
+scale = Vector2(40000, 40000)
+texture = ExtResource("2_7hq6l")
+region_enabled = true
+region_rect = Rect2(-5000, -5000, 5000, 5000)
+
+[node name="Inicial" type="Panel" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 85.0
+offset_top = 24.0
+offset_right = 551.0
+offset_bottom = 327.0
+
+[node name="Label2" type="Label" parent="Inicial"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 157.0
+offset_right = 439.0
+offset_bottom = 258.0
+theme_override_fonts/font = ExtResource("1_i2shq")
+theme_override_font_sizes/font_size = 15
+text = "O porco foi escolhido para representar a gripe suína no jogo. Isso se deve ao fato de que o vírus H1N1, responsável pela 'gripe suína', originou-se nos porcos, que são hospedeiros naturais de várias cepas de influenza, incluindo o H1N1. A proximidade entre porcos e humanos facilita a transmissão do vírus, tornando o porco um símbolo representativo da pandemia de 2009."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Inicial"]
+position = Vector2(235, 77)
+scale = Vector2(3, 3)
+texture = ExtResource("4_ca4bn")
+
+[node name="passandoprapneumonia" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 582.0
+offset_top = 136.0
+offset_right = 641.0
+offset_bottom = 188.0
+texture_normal = ExtResource("4_85ddd")
+texture_pressed = ExtResource("5_25qqx")
+texture_hover = ExtResource("5_25qqx")
+texture_focused = ExtResource("4_85ddd")
+stretch_mode = 0
+
+[connection signal="pressed" from="passandoprapneumonia" to="." method="_on_passandoprapneumonia_pressed"]

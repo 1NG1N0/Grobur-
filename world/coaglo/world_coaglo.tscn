@@ -1,0 +1,157 @@
+[gd_scene load_steps=30 format=3 uid="uid://cscqyladf0h8d"]
+
+[ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="1_dr4dg"]
+[ext_resource type="PackedScene" uid="uid://c7lw36y3p4v01" path="res://player/Coaglo.tscn" id="2_t7brn"]
+[ext_resource type="PackedScene" uid="uid://cid2t7emror7x" path="res://utilidades/enemy_spawner.tscn" id="3_7m0bx"]
+[ext_resource type="PackedScene" uid="uid://cgf3544x67pdu" path="res://gripe/enemy.tscn" id="4_c6jc7"]
+[ext_resource type="Script" path="res://menu/snd_Music.gd" id="4_xbm4j"]
+[ext_resource type="Script" path="res://utilidades/spawn_info.gd" id="5_pxk6b"]
+[ext_resource type="PackedScene" uid="uid://cfik6nemvmiha" path="res://zikavirus/zikavirus.tscn" id="6_b7va2"]
+[ext_resource type="PackedScene" uid="uid://d0do7sfndd5tt" path="res://covid19/covid19.tscn" id="7_ye3cv"]
+[ext_resource type="PackedScene" uid="uid://ca0o8prl2yoed" path="res://gripe/pneumonia.tscn" id="8_06qha"]
+[ext_resource type="PackedScene" uid="uid://bhoxekevsqx2m" path="res://gripe/muco.tscn" id="9_1ixwg"]
+[ext_resource type="Texture2D" uid="uid://da4ixeu3fg8m4" path="res://objects/ui_buttons_arrow_left_NORMAL.png" id="11_ct4rv"]
+[ext_resource type="Texture2D" uid="uid://c8diplmo05l0u" path="res://objects/ui_buttons_arrow_left_PRESSED.png" id="12_ft5pl"]
+[ext_resource type="Texture2D" uid="uid://bsolgycsnt1fk" path="res://objects/ui_buttons_arrow_right_NORMAL.png" id="13_7yrqm"]
+[ext_resource type="Texture2D" uid="uid://c5e8lkilro1pw" path="res://objects/ui_buttons_arrow_right_PRESSED.png" id="14_7jful"]
+[ext_resource type="Texture2D" uid="uid://dsd80oswiihjp" path="res://objects/ui_buttons_arrow_up_NORMAL.png" id="15_ocyxv"]
+[ext_resource type="Texture2D" uid="uid://c2scvtcn7l02w" path="res://objects/ui_buttons_arrow_up_PRESSED.png" id="16_txn6k"]
+[ext_resource type="Texture2D" uid="uid://dpmemvnyqmoai" path="res://objects/pixil-frame-0 (32).png" id="17_utjh2"]
+[ext_resource type="Texture2D" uid="uid://ctvcqycu2gguv" path="res://objects/pixil-frame-0 (33).png" id="18_kvi4u"]
+[ext_resource type="Texture2D" uid="uid://clutonw1mi63y" path="res://objects/pixil-frame-0 (34).png" id="19_2cgmh"]
+[ext_resource type="PackedScene" uid="uid://cbisevbiixos8" path="res://textures/joystick/joystick.tscn" id="20_lh3ct"]
+
+[sub_resource type="Resource" id="Resource_7gyjf"]
+script = ExtResource("5_pxk6b")
+time_start = 0
+time_end = 60
+enemy = ExtResource("4_c6jc7")
+enemy_num = 1
+enemy_spawn_delay = 2
+
+[sub_resource type="Resource" id="Resource_l6e6c"]
+script = ExtResource("5_pxk6b")
+time_start = 45
+time_end = 245
+enemy = ExtResource("6_b7va2")
+enemy_num = 3
+enemy_spawn_delay = 2
+
+[sub_resource type="Resource" id="Resource_dktry"]
+script = ExtResource("5_pxk6b")
+time_start = 120
+time_end = 950
+enemy = ExtResource("7_ye3cv")
+enemy_num = 3
+enemy_spawn_delay = 4
+
+[sub_resource type="Resource" id="Resource_e555x"]
+script = ExtResource("5_pxk6b")
+time_start = 300
+time_end = 900
+enemy = ExtResource("7_ye3cv")
+enemy_num = 3
+enemy_spawn_delay = 8
+
+[sub_resource type="Resource" id="Resource_mhhi2"]
+script = ExtResource("5_pxk6b")
+time_start = 360
+time_end = 950
+enemy = ExtResource("6_b7va2")
+enemy_num = 5
+enemy_spawn_delay = 5
+
+[sub_resource type="Resource" id="Resource_ny7af"]
+script = ExtResource("5_pxk6b")
+time_start = 400
+time_end = 700
+enemy = ExtResource("4_c6jc7")
+enemy_num = 7
+enemy_spawn_delay = 6
+
+[sub_resource type="Resource" id="Resource_gvtrh"]
+script = ExtResource("5_pxk6b")
+time_start = 350
+time_end = 700
+enemy = ExtResource("8_06qha")
+enemy_num = 6
+enemy_spawn_delay = 5
+
+[sub_resource type="Resource" id="Resource_4d8qr"]
+script = ExtResource("5_pxk6b")
+time_start = 600
+time_end = 600
+enemy = ExtResource("9_1ixwg")
+enemy_num = 1
+enemy_spawn_delay = 0
+
+[sub_resource type="Resource" id="Resource_vynwn"]
+script = ExtResource("5_pxk6b")
+time_start = 900
+time_end = 900
+enemy = ExtResource("9_1ixwg")
+enemy_num = 1
+enemy_spawn_delay = 0
+
+[node name="WorldCoaglo" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(40000, 40000)
+texture = ExtResource("1_dr4dg")
+
+[node name="Player" parent="." instance=ExtResource("2_t7brn")]
+
+[node name="Loot" type="Node2D" parent="." groups=["loot"]]
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_7m0bx")]
+spawns = Array[ExtResource("5_pxk6b")]([SubResource("Resource_7gyjf"), SubResource("Resource_l6e6c"), SubResource("Resource_dktry"), SubResource("Resource_e555x"), SubResource("Resource_mhhi2"), SubResource("Resource_ny7af"), SubResource("Resource_gvtrh"), SubResource("Resource_4d8qr"), SubResource("Resource_vynwn")])
+
+[node name="snd_Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+script = ExtResource("4_xbm4j")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Ui_left" type="TouchScreenButton" parent="CanvasLayer"]
+visible = false
+position = Vector2(8, 293)
+scale = Vector2(1.59375, 1.65625)
+texture_normal = ExtResource("11_ct4rv")
+texture_pressed = ExtResource("12_ft5pl")
+action = "left"
+
+[node name="Ui_rigth" type="TouchScreenButton" parent="CanvasLayer"]
+visible = false
+position = Vector2(127, 293)
+scale = Vector2(1.59375, 1.65625)
+texture_normal = ExtResource("13_7yrqm")
+texture_pressed = ExtResource("14_7jful")
+action = "rigth"
+
+[node name="Ui_up" type="TouchScreenButton" parent="CanvasLayer"]
+visible = false
+position = Vector2(66, 241)
+scale = Vector2(1.59375, 1.65625)
+texture_normal = ExtResource("15_ocyxv")
+texture_pressed = ExtResource("16_txn6k")
+action = "up"
+
+[node name="Ui_down" type="TouchScreenButton" parent="CanvasLayer"]
+visible = false
+position = Vector2(66, 293)
+scale = Vector2(1.59375, 1.65625)
+texture_normal = ExtResource("17_utjh2")
+texture_pressed = ExtResource("18_kvi4u")
+action = "down"
+
+[node name="Ui_down2" type="TouchScreenButton" parent="CanvasLayer"]
+position = Vector2(581, 29)
+scale = Vector2(1.59375, 1.65625)
+texture_normal = ExtResource("19_2cgmh")
+texture_pressed = ExtResource("19_2cgmh")
+action = "pause"
+
+[node name="Joystick" parent="CanvasLayer" instance=ExtResource("20_lh3ct")]
+position = Vector2(80, 279)
+scale = Vector2(1.8, 1.8)

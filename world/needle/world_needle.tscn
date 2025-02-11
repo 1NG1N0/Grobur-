@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5lej3u4isn47"]
+
+[ext_resource type="PackedScene" uid="uid://bgtggp8jhob1q" path="res://world/Medula ossea/world.tscn" id="1_osq4j"]
+
+[node name="world" instance=ExtResource("1_osq4j")]
+
+[node name="Player" parent="." index="1"]
+player_tipe = "agulha"

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://s5lqj25u1hw5"]
+
+[ext_resource type="Script" path="res://player/armas/blood_clot.gd" id="1_0hoxl"]
+[ext_resource type="Texture2D" uid="uid://boh7aihiv5dh3" path="res://player/armas/pixil-frame-0 (36).png" id="2_asl1q"]
+[ext_resource type="AudioStream" uid="uid://dvcfifsogkpk0" path="res://player/armas/tornado.ogg" id="3_6515h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xowdq"]
+size = Vector2(15, 24)
+
+[node name="Blood_Clot" type="Area2D" groups=["Attack"]]
+top_level = true
+scale = Vector2(0.1, 0.1)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_0hoxl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_asl1q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_xowdq")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+
+[node name="snd_clot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6515h")
+volume_db = -10.0
+autoplay = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

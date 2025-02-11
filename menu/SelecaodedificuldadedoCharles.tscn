@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=3 uid="uid://jfcrc56ukhqx"]
+
+[ext_resource type="Script" path="res://menu/seleção_de_personagem.gd" id="1_0xqjy"]
+[ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="1_j1l3e"]
+[ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="2_cnp3t"]
+[ext_resource type="Texture2D" uid="uid://blawm4fq54kdi" path="res://player/player_darwin.png" id="3_myc8q"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0xqjy")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
+scale = Vector2(40000, 40000)
+texture = ExtResource("2_cnp3t")
+region_enabled = true
+region_rect = Rect2(-5000, -5000, 5000, 5000)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(336, 180)
+scale = Vector2(4, 4)
+texture = ExtResource("3_myc8q")
+hframes = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 13.0
+offset_right = 569.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("1_j1l3e")
+theme_override_font_sizes/font_size = 36
+text = "Selecione a dificuldade"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 288.0
+offset_right = 493.0
+offset_bottom = 328.0
+
+[node name="Nivelfacil" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_j1l3e")
+theme_override_font_sizes/font_size = 25
+text = "Facil"
+
+[node name="Nivelmedio" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_j1l3e")
+theme_override_font_sizes/font_size = 25
+text = "Medio"
+
+[node name="Niveldificil" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_j1l3e")
+theme_override_font_sizes/font_size = 25
+text = "Dificil"
+
+[node name="Label2" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 340.0
+offset_top = 330.0
+offset_right = 629.0
+offset_bottom = 353.0
+theme_override_fonts/font = ExtResource("1_j1l3e")
+theme_override_font_sizes/font_size = 22
+text = "Indisponivel no momento"
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="voltarcharles" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("1_j1l3e")
+theme_override_font_sizes/font_size = 35
+text = "<--"
+
+[connection signal="pressed" from="HBoxContainer/Nivelfacil" to="." method="_on_nivelfacil_pressed"]
+[connection signal="pressed" from="HBoxContainer/Nivelmedio" to="." method="_on_nivelmedio_pressed"]
+[connection signal="pressed" from="HBoxContainer/Niveldificil" to="." method="_on_niveldificil_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="voltarcharles" to="." method="_on_voltarcharles_pressed"]

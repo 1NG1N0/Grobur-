@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://djxht57lukuo"]
+
+[ext_resource type="PackedScene" uid="uid://ds7r6sjbwxk8j" path="res://world/needle/nivelmedioagulha.tscn" id="1_pumka"]
+
+[node name="Nivelmedio" instance=ExtResource("1_pumka")]
+
+[node name="Player" parent="." index="3"]
+player_dificulty = "Extreme"
+player_tipe = "Coaglo"

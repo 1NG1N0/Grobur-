@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://d3ds7bg5k4iek"]
+
+[ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="1_4kt4q"]
+[ext_resource type="Script" path="res://menu/Explicacao.gd" id="1_ctmlr"]
+[ext_resource type="Texture2D" uid="uid://blawm4fq54kdi" path="res://player/player_darwin.png" id="2_ed433"]
+[ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="2_h6nsu"]
+[ext_resource type="Texture2D" uid="uid://c7s8b22nfo1m" path="res://menu/pixil-frame-0 (28).png" id="2_n0v84"]
+[ext_resource type="Texture2D" uid="uid://cp251vw17oego" path="res://player/player_pasteur.png" id="3_xra05"]
+[ext_resource type="Texture2D" uid="uid://be0n106lyupy2" path="res://menu/pixil-frame-0 (30).png" id="6_y2qac"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ctmlr")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
+scale = Vector2(40000, 40000)
+texture = ExtResource("2_h6nsu")
+region_enabled = true
+region_rect = Rect2(-5000, -5000, 5000, 5000)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(42, 67)
+scale = Vector2(2.375, 3.3125)
+texture = ExtResource("2_ed433")
+hframes = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(49, 232)
+scale = Vector2(2.375, 3.3125)
+texture = ExtResource("3_xra05")
+hframes = 2
+
+[node name="Persoangens" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 25.0
+offset_right = 573.0
+offset_bottom = 328.0
+
+[node name="Label" type="Label" parent="Persoangens"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 19.0
+offset_right = 427.0
+offset_bottom = 120.0
+theme_override_fonts/font = ExtResource("1_4kt4q")
+theme_override_font_sizes/font_size = 18
+text = "Todos os personagens do jogo representam glóbulos brancos, cuja função é defender o organismo durante situações de doença. O jogo busca ilustrar, de maneira lúdica, como seria a dinâmica da vida de um glóbulo branco nesse contexto de defesa imunológica"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="Persoangens"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 174.0
+offset_right = 436.0
+offset_bottom = 275.0
+theme_override_fonts/font = ExtResource("1_4kt4q")
+theme_override_font_sizes/font_size = 18
+text = "Os ataques dos personagens são baseados nas características funcionais dos glóbulos brancos. Mais adiante, será apresentada uma explicação detalhada sobre cada um desses ataques"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="2botao" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 582.0
+offset_top = 136.0
+offset_right = 641.0
+offset_bottom = 188.0
+texture_normal = ExtResource("2_n0v84")
+texture_pressed = ExtResource("6_y2qac")
+texture_hover = ExtResource("6_y2qac")
+texture_focused = ExtResource("2_n0v84")
+stretch_mode = 0
+
+[connection signal="pressed" from="2botao" to="." method="_on_botao_pressed"]

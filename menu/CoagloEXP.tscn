@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3udv43a7irqu"]
+
+[ext_resource type="Script" path="res://menu/Explicacao.gd" id="1_bs0ke"]
+[ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="1_q33uk"]
+[ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="2_e6tqa"]
+[ext_resource type="Texture2D" uid="uid://oisnbokphdcs" path="res://menu/Captura de tela 2024-08-08 102901.png" id="2_xwnlo"]
+[ext_resource type="Texture2D" uid="uid://dcnd3jqhw7flk" path="res://menu/Captura de tela 2024-08-08 102855.png" id="3_apym0"]
+[ext_resource type="Texture2D" uid="uid://d3ts5k8avvc6h" path="res://textures/armas/coaglo.png" id="5_f3ny6"]
+[ext_resource type="Texture2D" uid="uid://c7s8b22nfo1m" path="res://menu/pixil-frame-0 (28).png" id="6_bari5"]
+[ext_resource type="Texture2D" uid="uid://be0n106lyupy2" path="res://menu/pixil-frame-0 (30).png" id="7_laq8u"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bs0ke")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
+scale = Vector2(40000, 40000)
+texture = ExtResource("2_e6tqa")
+region_enabled = true
+region_rect = Rect2(-5000, -5000, 5000, 5000)
+
+[node name="Inicial" type="Panel" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 85.0
+offset_top = 24.0
+offset_right = 551.0
+offset_bottom = 327.0
+
+[node name="Label2" type="Label" parent="Inicial"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 121.0
+offset_right = 439.0
+offset_bottom = 302.0
+theme_override_fonts/font = ExtResource("1_q33uk")
+theme_override_font_sizes/font_size = 16
+text = "O ataque faz referência ao processo de coagulação, essencial para conter hemorragias e barrar patógenos. No entanto, os glóbulos brancos não são responsáveis por esse processo; essa função é das plaquetas e proteínas plasmáticas. A habilidade fictícia de criar e projetar um coágulo é usada simbolicamente para representar uma resposta defensiva rápida e eficaz no jogo."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Inicial"]
+position = Vector2(105, 72)
+scale = Vector2(0.323636, 0.345808)
+texture = ExtResource("2_xwnlo")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Inicial"]
+position = Vector2(376, 72)
+scale = Vector2(0.311111, 0.377418)
+texture = ExtResource("3_apym0")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Inicial"]
+position = Vector2(234, 72)
+scale = Vector2(2.9375, 2.65625)
+texture = ExtResource("5_f3ny6")
+
+[node name="passandopraMacrofago" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 582.0
+offset_top = 136.0
+offset_right = 641.0
+offset_bottom = 201.0
+texture_normal = ExtResource("6_bari5")
+texture_hover = ExtResource("7_laq8u")
+texture_focused = ExtResource("6_bari5")
+stretch_mode = 0
+
+[connection signal="pressed" from="passandopraMacrofago" to="." method="_on_passandopra_macrofago_pressed"]

@@ -1,0 +1,170 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2nxpdfgajmrb"]
+
+[ext_resource type="Script" path="res://menu/menu.gd" id="1_6bwdg"]
+[ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="1_hvd1c"]
+[ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="2_iksx7"]
+[ext_resource type="Texture2D" uid="uid://cncxcnlh0tta2" path="res://menu/Keyboard Letters and Symbols.png" id="2_t1v2p"]
+[ext_resource type="Texture2D" uid="uid://cjb7mt4gcxpu4" path="res://menu/Keyboard Extras.png" id="3_jjokq"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6bwdg")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
+scale = Vector2(40000, 40000)
+texture = ExtResource("2_iksx7")
+region_enabled = true
+region_rect = Rect2(-5000, -5000, 5000, 5000)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 6.0
+offset_right = 619.0
+offset_bottom = 353.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 15.0
+offset_right = 232.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("1_hvd1c")
+theme_override_font_sizes/font_size = 35
+text = "Controles"
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/Label"]
+position = Vector2(107, 53)
+scale = Vector2(2.062, 2.536)
+texture = ExtResource("2_t1v2p")
+region_enabled = true
+region_rect = Rect2(95.1557, 178.566, 16.7943, 12.575)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Panel/Label"]
+position = Vector2(68, 82)
+scale = Vector2(2.062, 2.536)
+texture = ExtResource("2_t1v2p")
+region_enabled = true
+region_rect = Rect2(0.729466, 146.174, 13.8239, 12.7833)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Panel/Label"]
+position = Vector2(145, 82)
+scale = Vector2(2.062, 2.536)
+texture = ExtResource("2_t1v2p")
+region_enabled = true
+region_rect = Rect2(48.8653, 146.961, 13.1077, 11.6212)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Panel/Label"]
+position = Vector2(107.563, 83.0521)
+scale = Vector2(2.0625, 2.53598)
+texture = ExtResource("2_t1v2p")
+region_enabled = true
+region_rect = Rect2(32.5926, 178.783, 14.3238, 11.4861)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Panel/Label"]
+position = Vector2(361.403, 51.216)
+scale = Vector2(2.062, 2.536)
+texture = ExtResource("2_t1v2p")
+region_enabled = true
+region_rect = Rect2(1.02905, 114.522, 13.3779, 13.3779)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Panel/Label"]
+position = Vector2(322.403, 80.216)
+scale = Vector2(2.062, 2.536)
+texture = ExtResource("2_t1v2p")
+region_enabled = true
+region_rect = Rect2(33.055, 115.243, 12.8374, 11.2158)
+
+[node name="Sprite2D7" type="Sprite2D" parent="Panel/Label"]
+position = Vector2(399.403, 80.216)
+scale = Vector2(2.062, 2.536)
+texture = ExtResource("2_t1v2p")
+region_enabled = true
+region_rect = Rect2(49.1355, 114.973, 13.3779, 11.351)
+
+[node name="Sprite2D8" type="Sprite2D" parent="Panel/Label"]
+position = Vector2(361.966, 81.2681)
+scale = Vector2(2.0625, 2.53598)
+texture = ExtResource("2_t1v2p")
+region_enabled = true
+region_rect = Rect2(16.9745, 114.703, 13.3779, 12.0266)
+
+[node name="Label" type="Label" parent="Panel/Label"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 60.0
+offset_right = 256.0
+offset_bottom = 86.0
+theme_override_fonts/font = ExtResource("1_hvd1c")
+theme_override_font_sizes/font_size = 28
+text = "OU"
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="Panel/Label"]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 111.0
+offset_right = 361.0
+offset_bottom = 137.0
+theme_override_fonts/font = ExtResource("1_hvd1c")
+theme_override_font_sizes/font_size = 28
+text = "DIrecionais"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 168.0
+offset_right = 347.0
+offset_bottom = 223.0
+theme_override_fonts/font = ExtResource("1_hvd1c")
+theme_override_font_sizes/font_size = 28
+text = "Direcione seus ataques COM O MOUSE"
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 229.0
+offset_right = 230.0
+offset_bottom = 255.0
+theme_override_fonts/font = ExtResource("1_hvd1c")
+theme_override_font_sizes/font_size = 28
+text = "Botao de pausa"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/Label3"]
+position = Vector2(28, 53)
+scale = Vector2(2.062, 2.536)
+texture = ExtResource("3_jjokq")
+region_enabled = true
+region_rect = Rect2(37.8902, 66.2157, 20.2696, 14.0536)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Panel/Label3"]
+position = Vector2(110, 53)
+scale = Vector2(2.062, 2.536)
+texture = ExtResource("3_jjokq")
+region_enabled = true
+region_rect = Rect2(96.7124, 66.3589, 30.5886, 12.4266)
+
+[node name="vply" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 389.0
+offset_top = 308.0
+offset_right = 569.0
+offset_bottom = 339.0
+theme_override_fonts/font = ExtResource("1_hvd1c")
+theme_override_font_sizes/font_size = 17
+text = "Voltar para o menu"
+
+[connection signal="pressed" from="Panel/vply" to="." method="_on_vply_pressed"]

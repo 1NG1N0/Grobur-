@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://bau58e6a1auxr"]
+
+[ext_resource type="Script" path="res://menu/Explicacao.gd" id="1_c1f5i"]
+[ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="1_ylpfo"]
+[ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="2_hrb1g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ymlv"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c1f5i")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
+scale = Vector2(40000, 40000)
+texture = ExtResource("2_hrb1g")
+region_enabled = true
+region_rect = Rect2(-5000, -5000, 5000, 5000)
+
+[node name="Inicial" type="Panel" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 85.0
+offset_top = 4.0
+offset_right = 551.0
+offset_bottom = 307.0
+
+[node name="Label" type="Label" parent="Inicial"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 4.0
+offset_right = 433.0
+offset_bottom = 105.0
+theme_override_fonts/font = ExtResource("1_ylpfo")
+theme_override_font_sizes/font_size = 15
+text = "Nesta primeira versão do jogo, estarão presentes apenas esses quatro inimigos. No entanto, conforme futuras atualizações, serão adicionados novos mapas, personagens e inimigos, expandindo a experiência do jogo e a diversidade de desafios enfrentados pelo jogador."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="Inicial"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 112.0
+offset_right = 438.0
+offset_bottom = 289.0
+theme_override_fonts/font = ExtResource("1_ylpfo")
+theme_override_font_sizes/font_size = 15
+text = "Este jogo foi desenvolvido como parte de uma pesquisa sobre a eficácia dos jogos no processo de aprendizagem, e a sua avaliação será de grande importância para o projeto. Para contribuir com a pesquisa, clique no botão abaixo e acesse um formulário com algumas perguntas. Para acompanhar as próximas atualizações do jogo, visite a página do jogo no ITCH.io. Agradecemos sua participação e apoio. Um grande abraço e obrigado por jogar."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Forms" type="Button" parent="."]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 312.0
+offset_right = 203.0
+offset_bottom = 353.0
+theme_override_fonts/font = ExtResource("1_ylpfo")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_2ymlv")
+text = "Forms"
+icon_alignment = 1
+
+[node name="Menuagradecimentos" type="Button" parent="."]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 310.0
+offset_right = 551.0
+offset_bottom = 351.0
+theme_override_fonts/font = ExtResource("1_ylpfo")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_2ymlv")
+text = "Voltar para o menu"
+icon_alignment = 1
+
+[connection signal="pressed" from="Forms" to="." method="_on_forms_pressed"]
+[connection signal="pressed" from="Menuagradecimentos" to="." method="_on_menuagradecimentos_pressed"]

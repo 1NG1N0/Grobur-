@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqplmff5rii0d"]
+
+[ext_resource type="Script" path="res://player/armas/bone_marrow_spear.gd" id="1_3lf3t"]
+[ext_resource type="Texture2D" uid="uid://8lxttqfelbsv" path="res://player/armas/pixil-frame-0 (35).png" id="2_ctj3c"]
+[ext_resource type="AudioStream" uid="uid://ny1rjqktp22x" path="res://player/armas/ice.wav" id="3_gpmk4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_128qi"]
+size = Vector2(6.36396, 33.234)
+
+[node name="BoneMarrowSpear" type="Area2D" groups=["Attack"]]
+top_level = true
+scale = Vector2(0.1, 0.1)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_3lf3t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ctj3c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -1)
+rotation = -0.785398
+shape = SubResource("RectangleShape2D_128qi")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="snd_attack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_gpmk4")
+volume_db = -5.0
+autoplay = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(40, 0)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

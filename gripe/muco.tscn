@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhoxekevsqx2m"]
+
+[ext_resource type="PackedScene" uid="uid://ca0o8prl2yoed" path="res://gripe/pneumonia.tscn" id="1_88pvu"]
+[ext_resource type="Texture2D" uid="uid://dm68wn14jb3i4" path="res://gripe/giant_amoeba_new.png" id="2_fopne"]
+
+[node name="Muco" instance=ExtResource("1_88pvu")]
+movement_speed = 399.0
+hp = 600
+enemy_damage = 30
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(5, 5)
+texture = ExtResource("2_fopne")
+hframes = 1
+
+[node name="CollisionShape2D" parent="." index="1"]
+disabled = true
+
+[editable path="Hurtbox"]
+[editable path="HitBox"]

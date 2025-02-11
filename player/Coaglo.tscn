@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7lw36y3p4v01"]
+
+[ext_resource type="PackedScene" uid="uid://4biyktvspjaw" path="res://player/player.tscn" id="1_sedjc"]
+[ext_resource type="Texture2D" uid="uid://dv3lugkf4dr77" path="res://player/player_hooke.png" id="2_sbdha"]
+
+[node name="Player" instance=ExtResource("1_sedjc")]
+player_tipe = "Coaglo"
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_sbdha")
+
+[node name="CollisionShape2D" parent="." index="2"]
+visible = false
+
+[node name="Hurtbox" parent="." index="4"]
+visible = false
+
+[node name="EnemyDetectionArea" parent="." index="7"]
+visible = false
+
+[node name="GrabArea" parent="." index="8"]
+visible = false
+
+[node name="CollectArea" parent="." index="9"]
+visible = false
+
+[editable path="Hurtbox"]

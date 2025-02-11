@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://bihj0ytkbhgrh"]
+
+[ext_resource type="Script" path="res://menu/Explicacao.gd" id="1_a4we5"]
+[ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="1_u4i12"]
+[ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="2_gjlcb"]
+[ext_resource type="Texture2D" uid="uid://c7s8b22nfo1m" path="res://menu/pixil-frame-0 (28).png" id="3_turwl"]
+[ext_resource type="Texture2D" uid="uid://be0n106lyupy2" path="res://menu/pixil-frame-0 (30).png" id="4_b12vl"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a4we5")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
+scale = Vector2(40000, 40000)
+texture = ExtResource("2_gjlcb")
+region_enabled = true
+region_rect = Rect2(-5000, -5000, 5000, 5000)
+
+[node name="Inicial" type="Panel" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 85.0
+offset_top = 24.0
+offset_right = 551.0
+offset_bottom = 327.0
+
+[node name="Label" type="Label" parent="Inicial"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = -6.0
+offset_right = 433.0
+offset_bottom = 171.0
+theme_override_fonts/font = ExtResource("1_u4i12")
+theme_override_font_sizes/font_size = 15
+text = "O jogo se desenrolará em diversos órgãos do corpo humano, cada um com suas características únicas e condições específicas. Além disso, o ambiente incluirá locais e situações que ilustram a proliferação de doenças, oferecendo uma representação abrangente dos desafios enfrentados pelo sistema imunológico"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="Inicial"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 159.0
+offset_right = 439.0
+offset_bottom = 300.0
+theme_override_fonts/font = ExtResource("1_u4i12")
+theme_override_font_sizes/font_size = 15
+text = "Nesta primeira versão do jogo, o cenário será o pulmão, configurado como o campo de batalha com o tema de doenças respiratórias. O jogo incluirá uma variedade de condições respiratórias que representarão diferentes desafios enfrentados pelo sistema imunológico. Detalhes específicos sobre cada uma dessas condições serão apresentados a seguir"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="botaodoterreno" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 582.0
+offset_top = 136.0
+offset_right = 641.0
+offset_bottom = 188.0
+texture_normal = ExtResource("3_turwl")
+texture_pressed = ExtResource("4_b12vl")
+texture_hover = ExtResource("4_b12vl")
+texture_focused = ExtResource("3_turwl")
+stretch_mode = 0
+
+[connection signal="pressed" from="botaodoterreno" to="." method="_on_botaodoterreno_pressed"]

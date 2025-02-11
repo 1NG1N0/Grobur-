@@ -1,0 +1,117 @@
+[gd_scene load_steps=8 format=3 uid="uid://x8h6sltiwsju"]
+
+[ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="1_5fg8s"]
+[ext_resource type="Script" path="res://menu/seleção_de_personagem.gd" id="1_jc4gj"]
+[ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="2_7jtgo"]
+[ext_resource type="Texture2D" uid="uid://blawm4fq54kdi" path="res://player/player_darwin.png" id="4_wlra7"]
+[ext_resource type="Texture2D" uid="uid://cp251vw17oego" path="res://player/player_pasteur.png" id="5_goy5t"]
+[ext_resource type="Texture2D" uid="uid://dv3lugkf4dr77" path="res://player/player_hooke.png" id="6_lftb3"]
+[ext_resource type="Texture2D" uid="uid://ke2xdot4tjc4" path="res://textures/spritesdeboneco/player_carson.png" id="7_ox5r2"]
+
+[node name="Seleção de personagem" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jc4gj")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
+scale = Vector2(40000, 40000)
+texture = ExtResource("2_7jtgo")
+region_enabled = true
+region_rect = Rect2(-5000, -5000, 5000, 5000)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 31.0
+offset_right = 592.0
+offset_bottom = 67.0
+theme_override_fonts/font = ExtResource("1_5fg8s")
+theme_override_font_sizes/font_size = 40
+text = "Selecione um personagem
+"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(106, 118.5)
+scale = Vector2(1.8125, 2.09375)
+texture = ExtResource("4_wlra7")
+hframes = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(106, 257)
+scale = Vector2(1.8125, 2.09375)
+texture = ExtResource("5_goy5t")
+hframes = 2
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(498, 120)
+scale = Vector2(1.8125, 2.09375)
+texture = ExtResource("6_lftb3")
+hframes = 2
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(492, 254)
+scale = Vector2(1.8125, 2.09375)
+texture = ExtResource("7_ox5r2")
+hframes = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 158.0
+offset_right = 201.0
+offset_bottom = 194.0
+theme_override_fonts/font = ExtResource("1_5fg8s")
+theme_override_font_sizes/font_size = 30
+text = "Charles"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 161.0
+offset_right = 569.0
+offset_bottom = 197.0
+theme_override_fonts/font = ExtResource("1_5fg8s")
+theme_override_font_sizes/font_size = 30
+text = "Robert"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 299.0
+offset_right = 190.0
+offset_bottom = 330.0
+theme_override_fonts/font = ExtResource("1_5fg8s")
+theme_override_font_sizes/font_size = 30
+text = "Louis"
+
+[node name="Button4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 296.0
+offset_right = 571.0
+offset_bottom = 327.0
+theme_override_fonts/font = ExtResource("1_5fg8s")
+theme_override_font_sizes/font_size = 30
+text = "Rachel"
+
+[node name="Button5" type="Button" parent="."]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 337.0
+offset_right = 383.0
+offset_bottom = 360.0
+theme_override_fonts/font = ExtResource("1_5fg8s")
+theme_override_font_sizes/font_size = 10
+text = "Voltar para o menu Principal"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="Button5" to="." method="_on_button_5_pressed"]

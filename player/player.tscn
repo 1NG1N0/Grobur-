@@ -1,0 +1,364 @@
+[gd_scene load_steps=24 format=3 uid="uid://4biyktvspjaw"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_ypmda"]
+[ext_resource type="Texture2D" uid="uid://blawm4fq54kdi" path="res://player/player_darwin.png" id="2_kwfw7"]
+[ext_resource type="PackedScene" uid="uid://dbashnaipb56n" path="res://utilidades/hurtbox.tscn" id="3_7nww2"]
+[ext_resource type="PackedScene" uid="uid://chf8nbleapfa7" path="res://utilidades/pause_menu.tscn" id="3_j5xo5"]
+[ext_resource type="Texture2D" uid="uid://b232i0q3bwtkq" path="res://objects/GUI/exp_background(1).png" id="4_tuf7y"]
+[ext_resource type="Texture2D" uid="uid://dv7llp8d5ewah" path="res://objects/GUI/exp_progress(1).png" id="5_0wf6b"]
+[ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="6_is24b"]
+[ext_resource type="Texture2D" uid="uid://bnavco6dk00ig" path="res://objects/healthbar.png" id="7_cxsfu"]
+[ext_resource type="AudioStream" uid="uid://bfqdtuemqs158" path="res://objects/levelup(1).ogg" id="7_jxmwl"]
+[ext_resource type="Texture2D" uid="uid://l4hebf8n5q4u" path="res://objects/pixil-frame-0 (31).png" id="9_x0ouv"]
+[ext_resource type="Script" path="res://menu/selectmenu.gd" id="10_68pj2"]
+[ext_resource type="AudioStream" uid="uid://bty0g6k6kuji8" path="res://utilidades/Victory.wav" id="10_cerbw"]
+[ext_resource type="AudioStream" uid="uid://bu55suw0mggff" path="res://utilidades/Lose.ogg" id="11_f6gji"]
+[ext_resource type="PackedScene" uid="uid://bo0c0vb6uvai" path="res://utilidades/button.tscn" id="12_05343"]
+[ext_resource type="Script" path="res://utilidades/Menupause.gd" id="15_glrjc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iy27p"]
+radius = 17.4329
+height = 34.8659
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5ir5"]
+size = Vector2(10, 39)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xn5x2"]
+radius = 375.161
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5phlk"]
+radius = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_02gmu"]
+
+[sub_resource type="Animation" id="Animation_7up08"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.19227, 1.30708)]
+}
+
+[sub_resource type="Animation" id="Animation_cykum"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.19227, 1.30708), Vector2(1, 1.096), Vector2(0.6, 0.658), Vector2(0.3, 0.329), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ecyj"]
+_data = {
+"RESET": SubResource("Animation_7up08"),
+"_death": SubResource("Animation_cykum")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+motion_mode = 1
+script = ExtResource("1_ypmda")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.19227, 1.30708)
+texture = ExtResource("2_kwfw7")
+hframes = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+texture_filter = 1
+
+[node name="Pause menu" parent="Camera2D" instance=ExtResource("3_j5xo5")]
+visible = false
+offset_left = -317.0
+offset_top = -164.0
+offset_right = -317.0
+offset_bottom = -164.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+show_behind_parent = true
+position = Vector2(2, 3)
+scale = Vector2(0.401538, -1.10145)
+shape = SubResource("CapsuleShape2D_iy27p")
+
+[node name="WalkTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.2
+one_shot = true
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_7nww2")]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+show_behind_parent = true
+position = Vector2(2, 1.5)
+shape = SubResource("RectangleShape2D_f5ir5")
+
+[node name="GUILayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="GUILayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="ExperienceBar" type="TextureProgressBar" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_under = ExtResource("4_tuf7y")
+texture_progress = ExtResource("5_0wf6b")
+
+[node name="Lbl_level" type="Label" parent="GUILayer/GUI/ExperienceBar"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 540.0
+offset_right = 640.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("6_is24b")
+theme_override_font_sizes/font_size = 20
+text = "Level: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthBar" type="TextureProgressBar" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 0
+offset_left = 304.0
+offset_top = 200.0
+offset_right = 336.0
+offset_bottom = 208.0
+texture_over = ExtResource("7_cxsfu")
+texture_progress = ExtResource("9_x0ouv")
+
+[node name="lblTimer" type="Label" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 280.0
+offset_top = 20.0
+offset_right = 360.0
+offset_bottom = 44.0
+theme_override_fonts/font = ExtResource("6_is24b")
+theme_override_font_sizes/font_size = 20
+text = "00:000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelUp" type="Panel" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+layout_mode = 0
+offset_left = 800.0
+offset_top = 50.0
+offset_right = 1000.0
+offset_bottom = 300.0
+
+[node name="lbl_LevelUP" type="Label" parent="GUILayer/GUI/LevelUp"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("6_is24b")
+text = "Level UP !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradeOptions" type="VBoxContainer" parent="GUILayer/GUI/LevelUp"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 50.0
+offset_right = 190.0
+offset_bottom = 100.0
+script = ExtResource("10_68pj2")
+
+[node name="snd_levelup" type="AudioStreamPlayer" parent="GUILayer/GUI/LevelUp"]
+unique_name_in_owner = true
+stream = ExtResource("7_jxmwl")
+volume_db = -10.0
+
+[node name="DeathPanel" type="Panel" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+layout_mode = 0
+offset_left = 216.0
+offset_top = -256.0
+offset_right = 416.0
+offset_bottom = -6.0
+
+[node name="lbl_Result" type="Label" parent="GUILayer/GUI/DeathPanel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("6_is24b")
+text = "Result:
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="snd_victory" type="AudioStreamPlayer" parent="GUILayer/GUI/DeathPanel"]
+unique_name_in_owner = true
+stream = ExtResource("10_cerbw")
+volume_db = -10.0
+
+[node name="snd_lose" type="AudioStreamPlayer" parent="GUILayer/GUI/DeathPanel"]
+unique_name_in_owner = true
+stream = ExtResource("11_f6gji")
+volume_db = -10.0
+
+[node name="Button" parent="GUILayer/GUI/DeathPanel" instance=ExtResource("12_05343")]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 200.0
+offset_right = 187.0
+offset_bottom = 230.0
+text = "return to main menu"
+
+[node name="CollectedWeapons" type="GridContainer" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 208.0
+offset_bottom = 40.0
+columns = 4
+
+[node name="CollectedUpgrades" type="GridContainer" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 8.0
+offset_top = 40.0
+offset_right = 208.0
+offset_bottom = 56.0
+columns = 6
+
+[node name="PauseMenu" type="Control" parent="GUILayer/GUI"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="GUILayer/GUI/PauseMenu"]
+layout_mode = 2
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 640.0
+offset_bottom = 358.0
+color = Color(0.27451, 0.27451, 0.27451, 0.341176)
+
+[node name="Menu" type="VBoxContainer" parent="GUILayer/GUI/PauseMenu"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 110.0
+offset_right = 208.0
+offset_bottom = 203.0
+script = ExtResource("15_glrjc")
+
+[node name="Button" type="Button" parent="GUILayer/GUI/PauseMenu/Menu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_is24b")
+theme_override_font_sizes/font_size = 40
+text = "Continue"
+
+[node name="Button2" type="Button" parent="GUILayer/GUI/PauseMenu/Menu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_is24b")
+theme_override_font_sizes/font_size = 40
+text = "Sair
+"
+
+[node name="Attack" type="Node2D" parent="."]
+
+[node name="BoneMarrowSpearTimer" type="Timer" parent="Attack"]
+unique_name_in_owner = true
+wait_time = 1.5
+
+[node name="BoneMarrowSpearAttackTimer" type="Timer" parent="Attack/BoneMarrowSpearTimer"]
+unique_name_in_owner = true
+wait_time = 0.075
+
+[node name="Blood_Clot_Timer" type="Timer" parent="Attack"]
+unique_name_in_owner = true
+wait_time = 5.0
+
+[node name="Blood_Clot_attack_timer" type="Timer" parent="Attack/Blood_Clot_Timer"]
+unique_name_in_owner = true
+wait_time = 0.2
+
+[node name="JavelinBase" type="Node2D" parent="Attack"]
+unique_name_in_owner = true
+
+[node name="NeddleTimer" type="Timer" parent="Attack"]
+unique_name_in_owner = true
+
+[node name="NeddleTimerAttack" type="Timer" parent="Attack/NeddleTimer"]
+unique_name_in_owner = true
+wait_time = 0.025
+
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+show_behind_parent = true
+shape = SubResource("CircleShape2D_xn5x2")
+
+[node name="GrabArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+show_behind_parent = true
+shape = SubResource("CircleShape2D_5phlk")
+
+[node name="CollectArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
+show_behind_parent = true
+shape = SubResource("CircleShape2D_02gmu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3ecyj")
+}
+
+[node name="Timerdedano" type="Timer" parent="."]
+wait_time = 0.05
+
+[connection signal="Hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
+[connection signal="click_end" from="GUILayer/GUI/DeathPanel/Button" to="." method="_on_button_click_end"]
+[connection signal="pressed" from="GUILayer/GUI/PauseMenu/Menu/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="GUILayer/GUI/PauseMenu/Menu/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="timeout" from="Attack/BoneMarrowSpearTimer" to="." method="_on_bone_marrow_spear_timer_timeout"]
+[connection signal="timeout" from="Attack/BoneMarrowSpearTimer/BoneMarrowSpearAttackTimer" to="." method="_on_bone_marrow_spear_attack_timer_timeout"]
+[connection signal="timeout" from="Attack/Blood_Clot_Timer" to="." method="_on_blood_clot_timer_timeout"]
+[connection signal="timeout" from="Attack/Blood_Clot_Timer/Blood_Clot_attack_timer" to="." method="_on_blood_clot_attack_timer_timeout"]
+[connection signal="timeout" from="Attack/NeddleTimer" to="." method="_on_neddle_timer_timeout"]
+[connection signal="timeout" from="Attack/NeddleTimer/NeddleTimerAttack" to="." method="_on_neddle_timer_attack_timeout"]
+[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
+[connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
+[connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
+[connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Timerdedano" to="." method="_on_timerdedano_timeout"]
+
+[editable path="Hurtbox"]

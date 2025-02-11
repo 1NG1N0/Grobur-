@@ -1,0 +1,159 @@
+[gd_scene load_steps=11 format=3 uid="uid://bls14efcfwix0"]
+
+[ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="1_acu8i"]
+[ext_resource type="Script" path="res://menu/menu.gd" id="1_ej3ww"]
+[ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="1_ma554"]
+[ext_resource type="Texture2D" uid="uid://c5chuo2nr03rk" path="res://Joystick UI/Joystick UI/PS/46.png" id="1_qklrr"]
+[ext_resource type="Texture2D" uid="uid://dyufct5o5gpjc" path="res://Joystick UI/Joystick UI/PS/96.png" id="2_1m3ql"]
+[ext_resource type="Texture2D" uid="uid://lqtqlq80322n" path="res://Joystick UI/Joystick UI/PS/47.png" id="2_3bgpl"]
+[ext_resource type="Texture2D" uid="uid://f4bxqrbxxjhn" path="res://Joystick UI/Joystick UI/PS/11.png" id="2_bpl80"]
+[ext_resource type="Texture2D" uid="uid://cba8alx0xqud5" path="res://Joystick UI/Joystick UI/PS/99.png" id="3_nwf0d"]
+[ext_resource type="Texture2D" uid="uid://bbdhqq8gqvnm0" path="res://Joystick UI/Joystick UI/PS/98.png" id="4_cjmv8"]
+[ext_resource type="Texture2D" uid="uid://bgafcqjd0sd00" path="res://Joystick UI/Joystick UI/PS/97.png" id="5_hwi5v"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ej3ww")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
+scale = Vector2(40000, 40000)
+texture = ExtResource("1_acu8i")
+region_enabled = true
+region_rect = Rect2(-5000, -5000, 5000, 5000)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 638.0
+offset_bottom = 357.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 249.0
+offset_bottom = 59.0
+theme_override_fonts/font = ExtResource("1_ma554")
+theme_override_font_sizes/font_size = 26
+text = "COntroles"
+
+[node name="Label2" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 28.0
+offset_right = 134.0
+offset_bottom = 53.0
+theme_override_fonts/font = ExtResource("1_ma554")
+theme_override_font_sizes/font_size = 24
+text = "Direcionais"
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+position = Vector2(86, 80)
+scale = Vector2(0.0478516, 0.0483398)
+texture = ExtResource("1_qklrr")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Panel"]
+position = Vector2(72, 315)
+scale = Vector2(0.0478516, 0.0483398)
+texture = ExtResource("2_bpl80")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Panel"]
+position = Vector2(78, 199)
+scale = Vector2(0.0478516, 0.0483398)
+texture = ExtResource("2_3bgpl")
+
+[node name="Label3" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 66.0
+offset_right = 179.0
+offset_bottom = 95.0
+theme_override_fonts/font = ExtResource("1_ma554")
+theme_override_font_sizes/font_size = 31
+text = "OU"
+
+[node name="Sprite2D2" type="Sprite2D" parent="Panel"]
+position = Vector2(261, 56.25)
+scale = Vector2(0.0351563, 0.0336914)
+texture = ExtResource("2_1m3ql")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Panel"]
+position = Vector2(219, 91.25)
+scale = Vector2(0.0351563, 0.0336914)
+texture = ExtResource("3_nwf0d")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Panel"]
+position = Vector2(261, 92.25)
+scale = Vector2(0.0351563, 0.0336914)
+texture = ExtResource("4_cjmv8")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Panel"]
+position = Vector2(304, 92.25)
+scale = Vector2(0.0351563, 0.0336914)
+texture = ExtResource("5_hwi5v")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Panel"]
+position = Vector2(206, 290.25)
+scale = Vector2(0.0351563, 0.0336914)
+texture = ExtResource("2_1m3ql")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Panel"]
+position = Vector2(164, 325.25)
+scale = Vector2(0.0351563, 0.0336914)
+texture = ExtResource("3_nwf0d")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Panel"]
+position = Vector2(206, 326.25)
+scale = Vector2(0.0351563, 0.0336914)
+texture = ExtResource("4_cjmv8")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Panel"]
+position = Vector2(249, 326.25)
+scale = Vector2(0.0351563, 0.0336914)
+texture = ExtResource("5_hwi5v")
+
+[node name="Label4" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 142.0
+offset_right = 106.0
+offset_bottom = 165.0
+theme_override_fonts/font = ExtResource("1_ma554")
+theme_override_font_sizes/font_size = 29
+text = "Mire com o"
+
+[node name="Label5" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 242.0
+offset_right = 277.0
+offset_bottom = 265.0
+theme_override_fonts/font = ExtResource("1_ma554")
+theme_override_font_sizes/font_size = 15
+text = "arraste a mira com o dpad e Selecione com o Botão de ação do seu controle"
+
+[node name="Label6" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 411.0
+offset_top = 16.0
+offset_right = 631.0
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("1_ma554")
+theme_override_font_sizes/font_size = 23
+text = "Pause com o start"
+
+[node name="vply" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 389.0
+offset_top = 308.0
+offset_right = 569.0
+offset_bottom = 339.0
+theme_override_fonts/font = ExtResource("1_ma554")
+theme_override_font_sizes/font_size = 17
+text = "Voltar para o menu"
+
+[connection signal="pressed" from="Panel/vply" to="." method="_on_vply_pressed"]

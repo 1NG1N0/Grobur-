@@ -1,0 +1,164 @@
+[gd_scene load_steps=31 format=3 uid="uid://bgtggp8jhob1q"]
+
+[ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="1_gnanu"]
+[ext_resource type="PackedScene" uid="uid://4biyktvspjaw" path="res://player/player.tscn" id="2_v7juy"]
+[ext_resource type="PackedScene" uid="uid://cgf3544x67pdu" path="res://gripe/enemy.tscn" id="3_0olra"]
+[ext_resource type="PackedScene" uid="uid://cid2t7emror7x" path="res://utilidades/enemy_spawner.tscn" id="3_1bw50"]
+[ext_resource type="Script" path="res://utilidades/spawn_info.gd" id="4_yfjj1"]
+[ext_resource type="PackedScene" uid="uid://cfik6nemvmiha" path="res://zikavirus/zikavirus.tscn" id="6_jnkb2"]
+[ext_resource type="PackedScene" uid="uid://d0do7sfndd5tt" path="res://covid19/covid19.tscn" id="7_eg21q"]
+[ext_resource type="PackedScene" uid="uid://ca0o8prl2yoed" path="res://gripe/pneumonia.tscn" id="8_y4c3l"]
+[ext_resource type="PackedScene" uid="uid://bhoxekevsqx2m" path="res://gripe/muco.tscn" id="9_b05hq"]
+[ext_resource type="AudioStream" uid="uid://bxmel8jk7hfqc" path="res://menu/battleThemeA.mp3" id="10_d1qr2"]
+[ext_resource type="Script" path="res://menu/snd_Music.gd" id="10_x2sqm"]
+[ext_resource type="Texture2D" uid="uid://da4ixeu3fg8m4" path="res://objects/ui_buttons_arrow_left_NORMAL.png" id="11_rfeft"]
+[ext_resource type="Texture2D" uid="uid://c8diplmo05l0u" path="res://objects/ui_buttons_arrow_left_PRESSED.png" id="12_blwiw"]
+[ext_resource type="Texture2D" uid="uid://bsolgycsnt1fk" path="res://objects/ui_buttons_arrow_right_NORMAL.png" id="13_karjn"]
+[ext_resource type="Texture2D" uid="uid://c5e8lkilro1pw" path="res://objects/ui_buttons_arrow_right_PRESSED.png" id="14_bxm61"]
+[ext_resource type="Texture2D" uid="uid://dsd80oswiihjp" path="res://objects/ui_buttons_arrow_up_NORMAL.png" id="15_acntu"]
+[ext_resource type="Texture2D" uid="uid://c2scvtcn7l02w" path="res://objects/ui_buttons_arrow_up_PRESSED.png" id="16_11cid"]
+[ext_resource type="Texture2D" uid="uid://dpmemvnyqmoai" path="res://objects/pixil-frame-0 (32).png" id="17_3etwd"]
+[ext_resource type="Texture2D" uid="uid://ctvcqycu2gguv" path="res://objects/pixil-frame-0 (33).png" id="18_pxa4t"]
+[ext_resource type="Texture2D" uid="uid://clutonw1mi63y" path="res://objects/pixil-frame-0 (34).png" id="19_6sbgq"]
+[ext_resource type="PackedScene" uid="uid://cbisevbiixos8" path="res://textures/joystick/joystick.tscn" id="21_biqlr"]
+
+[sub_resource type="Resource" id="Resource_s7yop"]
+script = ExtResource("4_yfjj1")
+time_start = 0
+time_end = 60
+enemy = ExtResource("3_0olra")
+enemy_num = 1
+enemy_spawn_delay = 2
+
+[sub_resource type="Resource" id="Resource_875iy"]
+script = ExtResource("4_yfjj1")
+time_start = 45
+time_end = 245
+enemy = ExtResource("6_jnkb2")
+enemy_num = 3
+enemy_spawn_delay = 2
+
+[sub_resource type="Resource" id="Resource_niqxl"]
+script = ExtResource("4_yfjj1")
+time_start = 120
+time_end = 950
+enemy = ExtResource("7_eg21q")
+enemy_num = 3
+enemy_spawn_delay = 4
+
+[sub_resource type="Resource" id="Resource_furks"]
+script = ExtResource("4_yfjj1")
+time_start = 300
+time_end = 900
+enemy = ExtResource("7_eg21q")
+enemy_num = 3
+enemy_spawn_delay = 8
+
+[sub_resource type="Resource" id="Resource_ku8pl"]
+script = ExtResource("4_yfjj1")
+time_start = 360
+time_end = 950
+enemy = ExtResource("6_jnkb2")
+enemy_num = 5
+enemy_spawn_delay = 5
+
+[sub_resource type="Resource" id="Resource_wf7nb"]
+script = ExtResource("4_yfjj1")
+time_start = 400
+time_end = 700
+enemy = ExtResource("3_0olra")
+enemy_num = 7
+enemy_spawn_delay = 6
+
+[sub_resource type="Resource" id="Resource_sn3lu"]
+script = ExtResource("4_yfjj1")
+time_start = 350
+time_end = 900
+enemy = ExtResource("8_y4c3l")
+enemy_num = 6
+enemy_spawn_delay = 5
+
+[sub_resource type="Resource" id="Resource_uofff"]
+script = ExtResource("4_yfjj1")
+time_start = 600
+time_end = 600
+enemy = ExtResource("9_b05hq")
+enemy_num = 1
+enemy_spawn_delay = 0
+
+[sub_resource type="Resource" id="Resource_r4pex"]
+script = ExtResource("4_yfjj1")
+time_start = 900
+time_end = 900
+enemy = ExtResource("9_b05hq")
+enemy_num = 1
+enemy_spawn_delay = 0
+
+[node name="world" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
+scale = Vector2(40000, 40000)
+texture = ExtResource("1_gnanu")
+region_enabled = true
+region_rect = Rect2(-5000, -5000, 5000, 5000)
+
+[node name="Loot" type="Node2D" parent="." groups=["loot"]]
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_1bw50")]
+spawns = Array[ExtResource("4_yfjj1")]([SubResource("Resource_s7yop"), SubResource("Resource_875iy"), SubResource("Resource_niqxl"), SubResource("Resource_furks"), SubResource("Resource_ku8pl"), SubResource("Resource_wf7nb"), SubResource("Resource_sn3lu"), SubResource("Resource_uofff"), SubResource("Resource_r4pex")])
+
+[node name="Player" parent="." instance=ExtResource("2_v7juy")]
+
+[node name="snd_Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("10_d1qr2")
+script = ExtResource("10_x2sqm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Ui_left" type="TouchScreenButton" parent="CanvasLayer"]
+visible = false
+position = Vector2(8, 293)
+scale = Vector2(1.59375, 1.65625)
+texture_normal = ExtResource("11_rfeft")
+texture_pressed = ExtResource("12_blwiw")
+action = "left"
+
+[node name="Ui_rigth" type="TouchScreenButton" parent="CanvasLayer"]
+visible = false
+position = Vector2(127, 293)
+scale = Vector2(1.59375, 1.65625)
+texture_normal = ExtResource("13_karjn")
+texture_pressed = ExtResource("14_bxm61")
+action = "rigth"
+
+[node name="Ui_up" type="TouchScreenButton" parent="CanvasLayer"]
+visible = false
+position = Vector2(66, 241)
+scale = Vector2(1.59375, 1.65625)
+texture_normal = ExtResource("15_acntu")
+texture_pressed = ExtResource("16_11cid")
+action = "up"
+
+[node name="Ui_down" type="TouchScreenButton" parent="CanvasLayer"]
+visible = false
+position = Vector2(66, 293)
+scale = Vector2(1.59375, 1.65625)
+texture_normal = ExtResource("17_3etwd")
+texture_pressed = ExtResource("18_pxa4t")
+action = "down"
+
+[node name="Ui_down2" type="TouchScreenButton" parent="CanvasLayer"]
+visible = false
+position = Vector2(581, 29)
+scale = Vector2(1.59375, 1.65625)
+texture_normal = ExtResource("19_6sbgq")
+texture_pressed = ExtResource("19_6sbgq")
+action = "Pause"
+
+[node name="Joystick" parent="CanvasLayer" instance=ExtResource("21_biqlr")]
+position = Vector2(80, 279)
+scale = Vector2(1.8, 1.8)

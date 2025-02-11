@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3pgsqfqqreyt"]
+
+[ext_resource type="PackedScene" uid="uid://qnspk77bqh7i" path="res://world/Medula ossea/Nivel_medio.tscn" id="1_yv5ui"]
+
+[node name="Nivelmedio" instance=ExtResource("1_yv5ui")]
+
+[node name="Player" parent="." index="3"]
+player_tipe = "Coaglo"

@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5hyv15k86pyg"]
+
+[ext_resource type="Script" path="res://menu/menu.gd" id="1_m040r"]
+[ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="2_03qf6"]
+[ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="2_as8lb"]
+[ext_resource type="Script" path="res://menu/selectmenu.gd" id="3_bywgb"]
+[ext_resource type="Texture2D" uid="uid://dkb17ntyi43b6" path="res://utilidades/Reddit_Icon_FullColor(1).png" id="4_lau01"]
+[ext_resource type="Texture2D" uid="uid://cqw16tlk3mxf1" path="res://utilidades/discord_icon_198220(1).png" id="5_8urtn"]
+[ext_resource type="Texture2D" uid="uid://6jieaybo37lt" path="res://utilidades/itch_io_logo_icon_145157(1).png" id="6_47am3"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_m040r")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
+scale = Vector2(40000, 40000)
+texture = ExtResource("2_as8lb")
+region_enabled = true
+region_rect = Rect2(-5000, -5000, 5000, 5000)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 26.0
+offset_right = 391.0
+offset_bottom = 108.0
+theme_override_fonts/font = ExtResource("2_03qf6")
+theme_override_font_sizes/font_size = 90
+text = "GROBURO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 318.0
+offset_right = 174.0
+offset_bottom = 358.0
+
+[node name="Reddit" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("4_lau01")
+
+[node name="Discord" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("5_8urtn")
+
+[node name="Itch" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("6_47am3")
+
+[node name="Menu_select" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 120.0
+offset_right = 350.0
+offset_bottom = 296.0
+script = ExtResource("3_bywgb")
+
+[node name="Button" type="Button" parent="Menu_select"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_03qf6")
+theme_override_font_sizes/font_size = 35
+text = "JOGAR"
+
+[node name="Controls" type="Button" parent="Menu_select"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_03qf6")
+theme_override_font_sizes/font_size = 35
+text = "Controles"
+
+[node name="Whatisthis" type="Button" parent="Menu_select"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_03qf6")
+theme_override_font_sizes/font_size = 35
+text = "SOBRE OQ E O JOGO?"
+
+[node name="QUIT" type="Button" parent="Menu_select"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_03qf6")
+theme_override_font_sizes/font_size = 35
+text = "SAIR
+"
+
+[connection signal="pressed" from="HBoxContainer/Reddit" to="." method="_on_reddit_pressed"]
+[connection signal="pressed" from="HBoxContainer/Discord" to="." method="_on_discord_pressed"]
+[connection signal="pressed" from="HBoxContainer/Itch" to="." method="_on_itch_pressed"]
+[connection signal="pressed" from="Menu_select/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Menu_select/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="Menu_select/Whatisthis" to="." method="_on_whatisthis_pressed"]
+[connection signal="pressed" from="Menu_select/QUIT" to="." method="_on_quit_pressed"]

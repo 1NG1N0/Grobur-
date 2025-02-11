@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://yq5gcuy0tg8g"]
+
+[ext_resource type="Script" path="res://menu/Explicacao.gd" id="1_43nd3"]
+[ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="2_frw03"]
+[ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="2_kqcw8"]
+[ext_resource type="Texture2D" uid="uid://nqsodn128mb6" path="res://gripe/ratinhonho.png" id="3_3tryy"]
+[ext_resource type="Texture2D" uid="uid://c7s8b22nfo1m" path="res://menu/pixil-frame-0 (28).png" id="4_7tyxf"]
+[ext_resource type="Texture2D" uid="uid://be0n106lyupy2" path="res://menu/pixil-frame-0 (30).png" id="5_5527w"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_43nd3")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
+scale = Vector2(40000, 40000)
+texture = ExtResource("2_frw03")
+region_enabled = true
+region_rect = Rect2(-5000, -5000, 5000, 5000)
+
+[node name="Inicial" type="Panel" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 85.0
+offset_top = 24.0
+offset_right = 551.0
+offset_bottom = 327.0
+
+[node name="Label2" type="Label" parent="Inicial"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 144.0
+offset_right = 439.0
+offset_bottom = 303.0
+theme_override_fonts/font = ExtResource("2_kqcw8")
+theme_override_font_sizes/font_size = 15
+text = "O camundongo foi selecionado para representar o resfriado no jogo. Isso se deve ao fato de que os camundongos podem contrair resfriados e gripes, e têm a capacidade de transmitir essas doenças para os seres humanos. Ambientes com alta concentração de camundongos são propícios para a propagação de doenças respiratórias, embora não sejam os principais transmissores dessas condições
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Inicial"]
+position = Vector2(231, 67)
+scale = Vector2(3, 3)
+texture = ExtResource("3_3tryy")
+
+[node name="passarpragripe" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 582.0
+offset_top = 136.0
+offset_right = 641.0
+offset_bottom = 188.0
+texture_normal = ExtResource("4_7tyxf")
+texture_pressed = ExtResource("5_5527w")
+texture_hover = ExtResource("5_5527w")
+texture_focused = ExtResource("4_7tyxf")
+stretch_mode = 0
+
+[connection signal="pressed" from="passarpragripe" to="." method="_on_passarpragripe_pressed"]

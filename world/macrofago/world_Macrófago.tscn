@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcetg22nxdsrr"]
+
+[ext_resource type="PackedScene" uid="uid://bgtggp8jhob1q" path="res://world/Medula ossea/world.tscn" id="1_1al8c"]
+
+[node name="world" instance=ExtResource("1_1al8c")]
+
+[node name="Player" parent="." index="3"]
+player_tipe = "Macrófago"

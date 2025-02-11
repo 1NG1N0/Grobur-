@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://lvmonuiaf1id"]
+
+[ext_resource type="PackedScene" uid="uid://djxht57lukuo" path="res://world/coaglo/niveldificilcoaglo.tscn" id="1_tjtde"]
+
+[node name="Nivelmedio" instance=ExtResource("1_tjtde")]
+
+[node name="Player" parent="." index="3"]
+player_tipe = "Macrófago"
