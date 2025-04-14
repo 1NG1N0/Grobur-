@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://c3udv43a7irqu"]
 
-[ext_resource type="Script" path="res://menu/Explicacao.gd" id="1_bs0ke"]
+[ext_resource type="Script" uid="uid://dvjuqh4uesnsq" path="res://menu/Explicacao.gd" id="1_bs0ke"]
 [ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="1_q33uk"]
 [ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="2_e6tqa"]
 [ext_resource type="Texture2D" uid="uid://oisnbokphdcs" path="res://menu/Captura de tela 2024-08-08 102901.png" id="2_xwnlo"]
@@ -42,7 +42,7 @@ offset_right = 439.0
 offset_bottom = 302.0
 theme_override_fonts/font = ExtResource("1_q33uk")
 theme_override_font_sizes/font_size = 16
-text = "O ataque faz referência ao processo de coagulação, essencial para conter hemorragias e barrar patógenos. No entanto, os glóbulos brancos não são responsáveis por esse processo; essa função é das plaquetas e proteínas plasmáticas. A habilidade fictícia de criar e projetar um coágulo é usada simbolicamente para representar uma resposta defensiva rápida e eficaz no jogo."
+text = "Este ataque faz referência simbólica ao processo de coagulação, essencial para conter hemorragias e impedir a entrada de patógenos. Embora essa função não seja atribuída diretamente aos glóbulos brancos — mas sim às plaquetas e proteínas plasmáticas — o ataque representa uma resposta rápida e eficaz, reforçando a ideia de proteção e contenção no campo de batalha."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

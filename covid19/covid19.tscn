@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://d0do7sfndd5tt"]
 
-[ext_resource type="Script" path="res://gripe/enemy.gd" id="1_u2atv"]
+[ext_resource type="Script" uid="uid://bf56a1fj7ltcx" path="res://gripe/enemy.gd" id="1_u2atv"]
 [ext_resource type="Texture2D" uid="uid://dqc1mq3v7t4c4" path="res://covid19/porquinho_oinc_oinc_demoniaco.png" id="2_3h0nd"]
 [ext_resource type="PackedScene" uid="uid://dbashnaipb56n" path="res://utilidades/hurtbox.tscn" id="3_r2kay"]
 [ext_resource type="PackedScene" uid="uid://qinfld4ywmr6" path="res://utilidades/hit_box.tscn" id="4_5ff55"]
@@ -44,8 +44,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uc5pb"]
 _data = {
-"RESET": SubResource("Animation_u1dmo"),
-"walk": SubResource("Animation_0gmj1")
+&"RESET": SubResource("Animation_u1dmo"),
+&"walk": SubResource("Animation_0gmj1")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3krd"]
@@ -59,7 +59,7 @@ motion_mode = 1
 script = ExtResource("1_u2atv")
 hp = 100
 knockback_recovery = 4.5
-experience = 15
+experience = 10
 enemy_damage = 12
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -71,7 +71,7 @@ shape = SubResource("CapsuleShape2D_pc6ng")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_uc5pb")
+&"": SubResource("AnimationLibrary_uc5pb")
 }
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_r2kay")]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://s5lqj25u1hw5"]
 
-[ext_resource type="Script" path="res://player/armas/blood_clot.gd" id="1_0hoxl"]
+[ext_resource type="Script" uid="uid://cp4eh84jvdpda" path="res://player/armas/blood_clot.gd" id="1_0hoxl"]
 [ext_resource type="Texture2D" uid="uid://boh7aihiv5dh3" path="res://player/armas/pixil-frame-0 (36).png" id="2_asl1q"]
 [ext_resource type="AudioStream" uid="uid://dvcfifsogkpk0" path="res://player/armas/tornado.ogg" id="3_6515h"]
 

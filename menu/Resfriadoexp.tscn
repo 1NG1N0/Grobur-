@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://yq5gcuy0tg8g"]
 
-[ext_resource type="Script" path="res://menu/Explicacao.gd" id="1_43nd3"]
+[ext_resource type="Script" uid="uid://dvjuqh4uesnsq" path="res://menu/Explicacao.gd" id="1_43nd3"]
 [ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="2_frw03"]
 [ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="2_kqcw8"]
 [ext_resource type="Texture2D" uid="uid://nqsodn128mb6" path="res://gripe/ratinhonho.png" id="3_3tryy"]
@@ -40,8 +40,7 @@ offset_right = 439.0
 offset_bottom = 303.0
 theme_override_fonts/font = ExtResource("2_kqcw8")
 theme_override_font_sizes/font_size = 15
-text = "O camundongo foi selecionado para representar o resfriado no jogo. Isso se deve ao fato de que os camundongos podem contrair resfriados e gripes, e têm a capacidade de transmitir essas doenças para os seres humanos. Ambientes com alta concentração de camundongos são propícios para a propagação de doenças respiratórias, embora não sejam os principais transmissores dessas condições
-"
+text = "O camundongo foi escolhido para representar o resfriado. Esses animais podem contrair e transmitir doenças respiratórias, e ambientes com grande presença de camundongos favorecem a proliferação desses vírus, mesmo que não sejam os principais vetores. No jogo, o camundongo simboliza esse risco invisível, comum em áreas urbanas."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

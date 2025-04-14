@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cacbo0lnpvlhv"]
 
 [ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="1_i2kbd"]
-[ext_resource type="Script" path="res://menu/Explicacao.gd" id="1_u0oas"]
+[ext_resource type="Script" uid="uid://dvjuqh4uesnsq" path="res://menu/Explicacao.gd" id="1_u0oas"]
 [ext_resource type="Texture2D" uid="uid://dm885eu1ffi68" path="res://menu/Captura de tela 2024-08-08 100610.png" id="2_dcu83"]
 [ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="2_pa3ed"]
 [ext_resource type="Texture2D" uid="uid://c7xwwu28wguy2" path="res://menu/Captura de tela 2024-08-08 100812.png" id="3_uoiyr"]
@@ -42,7 +42,7 @@ offset_right = 439.0
 offset_bottom = 258.0
 theme_override_fonts/font = ExtResource("1_i2kbd")
 theme_override_font_sizes/font_size = 18
-text = "A lança é composta por medula óssea, onde os glóbulos brancos são produzidos no organismo. Este ataque transforma a medula óssea em uma poderosa lança, que é arremessada contra os inimigos"
+text = "A lança simboliza a medula óssea, local onde os glóbulos brancos são produzidos. No jogo, essa estrutura é transformada em uma poderosa arma que é arremessada contra os inimigos, reforçando a ideia de origem e força do sistema imunológico."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

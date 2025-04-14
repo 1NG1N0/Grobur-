@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0kda0ajaahow"]
 
-[ext_resource type="Script" path="res://objects/experience_gem.gd" id="1_6weaj"]
+[ext_resource type="Script" uid="uid://b7d84qd0oedg4" path="res://objects/experience_gem.gd" id="1_6weaj"]
 [ext_resource type="Texture2D" uid="uid://2auvgxricp17" path="res://objects/Gem_green.png" id="1_u0hgx"]
 [ext_resource type="AudioStream" uid="uid://e3o03aj75xrp" path="res://objects/collectgem(1).mp3" id="3_ny5js"]
 

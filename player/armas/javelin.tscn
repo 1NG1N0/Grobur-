@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://duhnboel6rjcw"]
 
-[ext_resource type="Script" path="res://player/armas/javelin.gd" id="1_qarpk"]
+[ext_resource type="Script" uid="uid://boowdl2vk1e5j" path="res://player/armas/javelin.gd" id="1_qarpk"]
 [ext_resource type="Texture2D" uid="uid://cd1c61vq3n3xm" path="res://player/armas/pixil-frame-0 (37).png" id="2_2xgi7"]
 [ext_resource type="AudioStream" uid="uid://dpnr6qmntlx0d" path="res://player/armas/woosh.wav" id="3_8fcsw"]
 

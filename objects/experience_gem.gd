@@ -32,7 +32,7 @@ func collect():
 	sound.play()
 	collision.call_deferred("set", "disabled", true)
 	sprite.visible = false
-	if timer > 35:
+	if timer > 25:
 		queue_free()
 	return experience
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b48n2ar4fux3g"]
 
-[ext_resource type="Script" path="res://menu/Explicacao.gd" id="1_vl4ic"]
+[ext_resource type="Script" uid="uid://dvjuqh4uesnsq" path="res://menu/Explicacao.gd" id="1_vl4ic"]
 [ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="1_xoukr"]
 [ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="2_gyu8v"]
 [ext_resource type="Texture2D" uid="uid://c7s8b22nfo1m" path="res://menu/pixil-frame-0 (28).png" id="4_4greg"]
@@ -40,7 +40,7 @@ offset_right = 439.0
 offset_bottom = 301.0
 theme_override_fonts/font = ExtResource("1_xoukr")
 theme_override_font_sizes/font_size = 15
-text = "O pombo foi selecionado para representar a pneumonia no jogo devido ao seu papel como hospedeiro de patógenos como Chlamydia psittaci e Cryptococcus neoformans, que podem causar infecções pulmonares. A inalação de poeira contaminada proveniente das fezes de pombos, frequentemente encontrada em áreas urbanas, pode levar ao desenvolvimento de pneumonia em humanos, tornando o pombo um símbolo apropriado para essa condição"
+text = "O pombo representa a pneumonia, pois pode abrigar patógenos como Chlamydia psittaci e Cryptococcus neoformans, que afetam os pulmões. A inalação de poeira contaminada por fezes de pombos, especialmente em áreas urbanas, pode desencadear infecções respiratórias, fazendo dessa ave uma representação pertinente da doença."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

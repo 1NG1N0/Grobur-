@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://d2d55rjcah5x4"]
 
 [ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="1_bi6pk"]
-[ext_resource type="Script" path="res://menu/Explicacao.gd" id="1_ex06r"]
+[ext_resource type="Script" uid="uid://dvjuqh4uesnsq" path="res://menu/Explicacao.gd" id="1_ex06r"]
 [ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="2_otoa1"]
-[ext_resource type="Texture2D" uid="uid://cfqbv1wyp4p6g" path="res://menu/Captura de tela 2024-08-09 073654.png" id="2_x85s8"]
 [ext_resource type="Texture2D" uid="uid://c7s8b22nfo1m" path="res://menu/pixil-frame-0 (28).png" id="4_f7k0q"]
+[ext_resource type="Texture2D" uid="uid://25gpydxgpin5" path="res://zikavirus/pixil-frame-0 (24).png" id="4_fdtp2"]
 [ext_resource type="Texture2D" uid="uid://be0n106lyupy2" path="res://menu/pixil-frame-0 (30).png" id="5_m6w38"]
 
 [node name="Control" type="Control"]
@@ -40,15 +40,15 @@ offset_right = 439.0
 offset_bottom = 297.0
 theme_override_fonts/font = ExtResource("1_bi6pk")
 theme_override_font_sizes/font_size = 15
-text = "O rato foi selecionado para representar a gripe no jogo. Semelhante ao camundongo, o rato pode contrair doenças como a gripe e tem a capacidade de transmiti-las para os seres humanos. A escolha do rato como símbolo da gripe também reflete a semelhança entre os camundongos e ratos, que frequentemente são confundidos e ambos são associados à propagação de doenças respiratórias, como a gripe e o resfriado"
+text = "O rato representa a gripe no jogo. Assim como o camundongo, o rato pode carregar vírus respiratórios e transmitir doenças aos seres humanos. Essa escolha reforça a relação entre roedores e a disseminação de enfermidades, especialmente em locais com pouca higiene."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Inicial"]
-position = Vector2(229, 65)
-scale = Vector2(0.771517, 0.730017)
-texture = ExtResource("2_x85s8")
+position = Vector2(229, 70)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("4_fdtp2")
 
 [node name="passandoogripe" type="TextureButton" parent="."]
 layout_mode = 0

@@ -9,7 +9,7 @@ func _on_controls_pressed():
 func _on_whatisthis_pressed():
 	get_tree().change_scene_to_file("res://menu/Explicacao.tscn")
 func _on_vply_pressed():
-	get_tree().change_scene_to_file("res://menu/menu.tscn")
+	get_tree().change_scene_to_file("res://menu.tscn")
 func _on_joystick_pressed():
 	get_tree().change_scene_to_file("res://menu/joystick.tscn")
 func _on_teclado_pressed():

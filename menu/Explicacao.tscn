@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dfa0faa2yewl"]
 
-[ext_resource type="Script" path="res://menu/Explicacao.gd" id="1_cn238"]
+[ext_resource type="Script" uid="uid://dvjuqh4uesnsq" path="res://menu/Explicacao.gd" id="1_cn238"]
 [ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="2_uu77x"]
 [ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="2_wnccu"]
 [ext_resource type="Texture2D" uid="uid://c7s8b22nfo1m" path="res://menu/pixil-frame-0 (28).png" id="3_diacw"]
@@ -39,7 +39,7 @@ offset_right = 431.0
 offset_bottom = 181.0
 theme_override_fonts/font = ExtResource("2_wnccu")
 theme_override_font_sizes/font_size = 18
-text = "Groburô é um jogo desenvolvido como parte deste Trabalho de Conclusão de Curso (TCC). Seu objetivo é educar o jogador sobre o papel dos glóbulos brancos no sistema imunológico, demonstrando como essas células atuam na proteção do corpo contra doenças dentro das veias e do sistema circulatório"
+text = "Groburô é um jogo desenvolvido como parte deste Trabalho de Conclusão de Curso (TCC), com o objetivo de educar os jogadores sobre o papel dos glóbulos brancos no sistema imunológico. A proposta é mostrar, de forma lúdica e interativa, como essas células atuam na defesa do corpo contra doenças, dentro das veias e do sistema circulatório."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -52,7 +52,7 @@ offset_right = 439.0
 offset_bottom = 287.0
 theme_override_fonts/font = ExtResource("2_wnccu")
 theme_override_font_sizes/font_size = 18
-text = "Posteriormente, será detalhado como cada elemento presente no jogo se alinha e contribui para a contextualização da temática central"
+text = "Mais adiante, será apresentado como cada elemento do jogo foi pensado para contribuir com essa temática."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ebq1lgbtijnk"]
 
-[ext_resource type="Script" path="res://objects/GUI/item_option.gd" id="1_1m687"]
+[ext_resource type="Script" uid="uid://crtdpxlc4d7ty" path="res://objects/GUI/item_option.gd" id="1_1m687"]
 [ext_resource type="Texture2D" uid="uid://dntw1wwmfgfdn" path="res://objects/GUI/sword.png" id="1_mrgyd"]
 [ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="2_itm6r"]
 

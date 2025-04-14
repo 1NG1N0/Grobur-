@@ -70,15 +70,16 @@ func _on_timer_timeout():
 
 
 func _process(delta):
+	pass
 	# Captura o movimento do analógico esquerdo
-	var left_stick_input_x = Input.get_action_strength("analo_esqdir") - Input.get_action_strength("analo_esqesq")
-	var left_stick_input_y = Input.get_action_strength("analogico_esqcima") - Input.get_action_strength("analogi_esqbaixo")
-	left_stick_input_y *= -1
+	#var left_stick_input_x = Input.get_action_strength("analo_esqdir") - Input.get_action_strength("analo_esqesq")
+	#var left_stick_input_y = Input.get_action_strength("analogico_esqcima") - Input.get_action_strength("analogi_esqbaixo")
+	#left_stick_input_y *= -1
 	# Pega a posição atual do mouse
-	var mouse_pos = get_viewport().get_mouse_position()
+	#var mouse_pos = get_viewport().get_mouse_position()
 	
 	# Calcula a nova posição do mouse
-	var new_mouse_pos = mouse_pos + Vector2(left_stick_input_x, left_stick_input_y) * sensitivity
+	#var new_mouse_pos = mouse_pos + Vector2(left_stick_input_x, left_stick_input_y) * sensitivity
 	
 	# Atualiza a posição do mouse
-	get_viewport().warp_mouse(new_mouse_pos)
+	#get_viewport().warp_mouse(new_mouse_pos)

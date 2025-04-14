@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cqplmff5rii0d"]
 
-[ext_resource type="Script" path="res://player/armas/bone_marrow_spear.gd" id="1_3lf3t"]
+[ext_resource type="Script" uid="uid://b1lrqmhc7vuvd" path="res://player/armas/bone_marrow_spear.gd" id="1_3lf3t"]
 [ext_resource type="Texture2D" uid="uid://8lxttqfelbsv" path="res://player/armas/pixil-frame-0 (35).png" id="2_ctj3c"]
 [ext_resource type="AudioStream" uid="uid://ny1rjqktp22x" path="res://player/armas/ice.wav" id="3_gpmk4"]
 

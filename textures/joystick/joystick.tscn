@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cbisevbiixos8"]
 
-[ext_resource type="Script" path="res://textures/joystick/joystick.gd" id="1_c6lp8"]
+[ext_resource type="Script" uid="uid://80cq1m61cleb" path="res://textures/joystick/joystick.gd" id="1_c6lp8"]
 [ext_resource type="Texture2D" uid="uid://dox1lsae5xrhw" path="res://textures/joystick/joyring.png" id="1_v8o1l"]
 [ext_resource type="Texture2D" uid="uid://dfjh8rgmvxcn8" path="res://textures/joystick/joyknobpng.png" id="2_0310b"]
-[ext_resource type="Script" path="res://textures/joystick/joyknobpng.gd" id="4_3lfjh"]
+[ext_resource type="Script" uid="uid://cw6ic1qru4pcl" path="res://textures/joystick/joyknobpng.gd" id="4_3lfjh"]
 
 [node name="Joystick" type="Node2D"]
 script = ExtResource("1_c6lp8")

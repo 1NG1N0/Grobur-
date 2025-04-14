@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
-
+var current_selection = 0
+var options = []
+var optionsMax = 0
 var cursor_texture: Texture2D = preload("res://utilidades/pixil-frame-0 (45)(1).png")
 @onready var pause = $GUILayer/GUI/PauseMenu
 @export var player_dificulty: String = "Facil"
@@ -45,6 +47,9 @@ var Blood_Cloot = preload("res://player/armas/blood_clot.tscn")
 var javelin = preload("res://player/armas/javelin.tscn")
 @onready var javelinBase = get_node("%JavelinBase")
 var needle = preload("res://player/armas/neddle.tscn")
+# Chicote
+var whip = preload("res://player/armas/whip.tscn")
+@onready var WhipTimer = get_node("%WhipTimer")  # Timer para o chicote
 
 #attacksnodes
 @onready var BoneMarrowSpearTimer = get_node("%BoneMarrowSpearTimer")
@@ -90,6 +95,14 @@ var BloodClot_level = 0
 var javelin_ammo = 0
 var javelin_level = 0
 
+#whip
+var whip_level = 0
+var whip_attackspeed = 1.2  # Tempo entre ataques
+var whip_damage = 10
+var flip_direction = 1
+
+
+
 #enemy related
 var enemy_close = []
 @onready var joystick = $"../CanvasLayer/Joystick"
@@ -98,11 +111,11 @@ func _ready():
 	Input.set_custom_mouse_cursor(cursor_texture)
 	match player_tipe:
 		"gelo":
-			upgrade_character("icespear1")
+			upgrade_character("whip1")
 			spritenormal = preload("res://player/player_darwin.png")
 		"agulha":
 			upgrade_character("neddle1")
-			spritenormal = preload("res://textures/spritesdeboneco/player_carson.png")
+			spritenormal = preload("res://player/player_carson.png")
 		"Coaglo":
 			upgrade_character("tornado1")
 			spritenormal = preload("res://player/player_hooke.png")
@@ -129,8 +142,11 @@ func attack():
 			BloodClotTimer.start()
 	if javelin_level > 0:
 		spawn_javelin()
-		
-		
+	if whip_level > 0:
+		WhipTimer.wait_time = whip_attackspeed * (1 - spell_cooldown)
+		if WhipTimer.is_stopped():
+			WhipTimer.start()
+
 		
 	
 
@@ -145,38 +161,39 @@ func _physics_process(_delta):
 	
 
 func movement():
-	var direction = joystick.posVector
-	if direction: 
-		velocity = direction * movement_speed
-	else: 
-		velocity = Vector2(0, 0)
-	if direction.x > 0:
-		Sprite.flip_h = true
-	elif direction.x < 0:
-		Sprite.flip_h = true
+	if not LevelPanel.visible:
+		var direction = joystick.posVector
+		if direction: 
+			velocity = direction * movement_speed
+		else: 
+			velocity = Vector2(0, 0)
+		if direction.x > 0:
+			Sprite.flip_h = true
+		elif direction.x < 0:
+			Sprite.flip_h = true
 	
-	var x_mov = Input.get_action_strength("rigth")  -  Input.get_action_strength("left")
-	var y_mov = Input.get_action_strength("down")  - Input.get_action_strength("up")
-	var mov = direction if direction != Vector2.ZERO else Vector2(x_mov, y_mov)
-	if mov.x > 0:
-		Sprite.flip_h = true
-	elif mov.x < 0:
-		Sprite.flip_h = false
+		var x_mov = Input.get_action_strength("rigth")  -  Input.get_action_strength("left")
+		var y_mov = Input.get_action_strength("down")  - Input.get_action_strength("up")
+		print(Input.get_action_strength("up"))
+		var mov = direction if direction != Vector2.ZERO else Vector2(x_mov, y_mov)
+		if mov.x > 0:
+			Sprite.flip_h = true
+		elif mov.x < 0:
+			Sprite.flip_h = false
 		
 	
-	if mov != Vector2.ZERO:
-		last_movement = mov
-		if WalkTimer.is_stopped():
-			if Sprite.frame >= Sprite.hframes - 1:
-				Sprite.frame = 0
-			else: 
-				Sprite.frame = 1
-			WalkTimer.start()
+		if mov != Vector2.ZERO:
+			last_movement = mov
+			if WalkTimer.is_stopped():
+				if Sprite.frame >= Sprite.hframes - 1:
+					Sprite.frame = 0
+				else: 
+					Sprite.frame = 1
+				WalkTimer.start()
 				
-	if mov != Vector2.ZERO:
-		velocity = mov.normalized()*movement_speed
-		# Normaliza o vetor e ajusta o movimento do teclado
-	move_and_slide()
+		if mov != Vector2.ZERO:
+			velocity = mov.normalized()*movement_speed
+			move_and_slide()
 
 
 func _on_hurtbox_hurt(damage, _angle, _knockback):
@@ -277,7 +294,7 @@ func calculate_experience(gem_exp):
 		collected_experience -= exp_required-experience
 		experience_level += 1
 		if hp < 90:
-			hp += 5
+			hp += 4
 			healthBar.value = hp
 		else:
 			hp += 0
@@ -296,9 +313,9 @@ func calculate_experiencecap():
 	if experience_level < 20:
 		exp_cap = experience_level*5
 	elif experience_level < 40:
-		exp_cap = 95 * (experience_level-19)*8
+		exp_cap = 255 + (experience_level-19)*30
 	else:
-		exp_cap = 255 + (experience_level-39)*12
+		exp_cap = 255 + (experience_level-39)*50
 		
 	return exp_cap
 
@@ -316,16 +333,39 @@ func levelup():
 	tween.tween_property(LevelPanel, "position", Vector2(220, 50), 0.2).set_trans(Tween.TRANS_QUINT).set_ease(tween.EASE_IN)
 	tween.play()
 	LevelPanel.visible = true
-	var options = 0
+	options.clear()
 	var optionsMax = 3
-	while options < optionsMax:
+	for i in range(optionsMax):
 		var option_choice = itemOptions.instantiate()
 		option_choice.item = get_random_item()
 		upgradeOptions.add_child(option_choice)
-		options += 1
+		options.append(option_choice)
+		print("Option Added: ", option_choice.item)  # Debug
 	get_tree().paused = true
+	update_selection()
 	
 	
+func update_selection():
+	print("Updating Selection: ", current_selection)
+	for i in range(options.size()):
+		options[i].set_selected(i == current_selection)
+		print("Setting selected for option: ", options[i].item, " to ", (i == current_selection))
+
+func _input(event):
+	if LevelPanel.visible:
+		if event.is_action_pressed("up"):
+			current_selection = (current_selection - 1 + options.size()) % options.size()
+			update_selection()
+		elif event.is_action_pressed("down"):
+			current_selection = (current_selection + 1) % options.size()
+			update_selection()
+		elif event.is_action_pressed("ui_accept"):
+			if options.size() > 0:
+				emit_signal("selected_upgrade", options[current_selection].item)
+	elif not get_tree().is_paused():  # Allow movement input only when the game is not paused
+		movement()
+
+
 
 func upgrade_character(upgrade):
 	match upgrade:
@@ -372,6 +412,20 @@ func upgrade_character(upgrade):
 			javelin_level = 3
 		"javelin4":
 			javelin_level = 4
+		"whip1":
+			whip_level = 1
+			whip_damage += 10
+		"whip2":
+			whip_level = 2
+			whip_damage += 5
+			whip_attackspeed -= 0.1
+		"whip3":
+			whip_level = 3
+			whip_damage += 10
+		"whip4":
+			whip_level = 4
+			whip_damage += 15
+			whip_attackspeed -= 0.1
 		"armor1","armor2","armor3","armor4":
 			armor += 2
 		"speed1","speed2","speed3","speed4":
@@ -429,6 +483,7 @@ func get_random_item():
 		return randomitem
 	else:
 		return null
+	print(options)
 		
 		
 		
@@ -494,7 +549,7 @@ func death():
 				snd_Lose.play()
 func _on_button_click_end():
 	get_tree().paused = false
-	var _level = get_tree().change_scene_to_file("res://menu/menu.tscn")
+	var _level = get_tree().change_scene_to_file("res://menu.tscn")
 
 
 func _on_neddle_timer_timeout():
@@ -533,7 +588,21 @@ func _on_animation_player_animation_finished(_death):
 func _on_timerdedano_timeout():
 	Sprite.texture = spritenormal
 func _on_button_pressed():
+	paused = false
 	Engine.time_scale = 1
 	pause.hide()
 func _on_button_2_pressed():
 	get_tree().quit()
+
+
+func attack_whip():
+	var whip = preload("res://player/armas/whip.tscn").instantiate()
+	var direction = 1 if Sprite.flip_h else -1 
+	whip.flip_direction = direction
+	whip.global_position = global_position + Vector2(whip.flip_direction * 5, 0)
+	get_parent().add_child(whip)
+
+
+func _on_whip_timer_timeout() -> void:
+	if whip_level > 0:
+		attack_whip()

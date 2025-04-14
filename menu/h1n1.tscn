@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://ctboo5dnyryhe"]
 
 [ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="1_i2shq"]
-[ext_resource type="Script" path="res://menu/Explicacao.gd" id="1_qkufl"]
+[ext_resource type="Script" uid="uid://dvjuqh4uesnsq" path="res://menu/Explicacao.gd" id="1_qkufl"]
 [ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="2_7hq6l"]
 [ext_resource type="Texture2D" uid="uid://c7s8b22nfo1m" path="res://menu/pixil-frame-0 (28).png" id="4_85ddd"]
 [ext_resource type="Texture2D" uid="uid://dqc1mq3v7t4c4" path="res://covid19/porquinho_oinc_oinc_demoniaco.png" id="4_ca4bn"]
@@ -40,7 +40,7 @@ offset_right = 439.0
 offset_bottom = 258.0
 theme_override_fonts/font = ExtResource("1_i2shq")
 theme_override_font_sizes/font_size = 15
-text = "O porco foi escolhido para representar a gripe suína no jogo. Isso se deve ao fato de que o vírus H1N1, responsável pela 'gripe suína', originou-se nos porcos, que são hospedeiros naturais de várias cepas de influenza, incluindo o H1N1. A proximidade entre porcos e humanos facilita a transmissão do vírus, tornando o porco um símbolo representativo da pandemia de 2009."
+text = "O porco foi selecionado para representar a gripe suína, causada pelo vírus H1N1. Como hospedeiros naturais de várias cepas da influenza, incluindo o H1N1, os porcos desempenham um papel importante na origem de pandemias. Sua proximidade com os humanos facilita o contágio, tornando-o um símbolo adequado para essa condição."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

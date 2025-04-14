@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://pwfbfeehxdsv"]
 
-[ext_resource type="Script" path="res://menu/seleção_de_personagem.gd" id="1_3l1yv"]
+[ext_resource type="Script" uid="uid://cik6vbjojwxfj" path="res://menu/seleção_de_personagem.gd" id="1_3l1yv"]
 [ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="2_0dscy"]
 [ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="2_fy3qk"]
-[ext_resource type="Texture2D" uid="uid://ke2xdot4tjc4" path="res://textures/spritesdeboneco/player_carson.png" id="3_bny6r"]
+[ext_resource type="Texture2D" uid="uid://dpiv8ktn048cu" path="res://player/player_carson.png" id="3_gxlgk"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -25,7 +25,7 @@ region_rect = Rect2(-5000, -5000, 5000, 5000)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(336, 180)
 scale = Vector2(4, 4)
-texture = ExtResource("3_bny6r")
+texture = ExtResource("3_gxlgk")
 hframes = 2
 
 [node name="Label" type="Label" parent="."]

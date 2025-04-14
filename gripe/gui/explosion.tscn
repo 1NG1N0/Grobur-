@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://btyar60e4d5nk" path="res://gripe/gui/explosion_pixelfied.png" id="1_t2ajy"]
 [ext_resource type="AudioStream" uid="uid://c2cswfwyfic5i" path="res://gripe/gui/enemy_death.ogg" id="2_1c8bb"]
-[ext_resource type="Script" path="res://gripe/gui/explosion.gd" id="2_4bpxi"]
+[ext_resource type="Script" uid="uid://bo4le1bhjot5l" path="res://gripe/gui/explosion.gd" id="2_4bpxi"]
 
 [sub_resource type="Animation" id="Animation_fi1sx"]
 length = 0.001
@@ -38,8 +38,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n30nc"]
 _data = {
-"RESET": SubResource("Animation_fi1sx"),
-"explode": SubResource("Animation_5b5aa")
+&"RESET": SubResource("Animation_fi1sx"),
+&"explode": SubResource("Animation_5b5aa")
 }
 
 [node name="Explosion" type="Sprite2D"]

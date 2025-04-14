@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://d3ds7bg5k4iek"]
 
 [ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="1_4kt4q"]
-[ext_resource type="Script" path="res://menu/Explicacao.gd" id="1_ctmlr"]
+[ext_resource type="Script" uid="uid://dvjuqh4uesnsq" path="res://menu/Explicacao.gd" id="1_ctmlr"]
 [ext_resource type="Texture2D" uid="uid://blawm4fq54kdi" path="res://player/player_darwin.png" id="2_ed433"]
 [ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="2_h6nsu"]
 [ext_resource type="Texture2D" uid="uid://c7s8b22nfo1m" path="res://menu/pixil-frame-0 (28).png" id="2_n0v84"]
@@ -52,7 +52,7 @@ offset_right = 427.0
 offset_bottom = 120.0
 theme_override_fonts/font = ExtResource("1_4kt4q")
 theme_override_font_sizes/font_size = 18
-text = "Todos os personagens do jogo representam glóbulos brancos, cuja função é defender o organismo durante situações de doença. O jogo busca ilustrar, de maneira lúdica, como seria a dinâmica da vida de um glóbulo branco nesse contexto de defesa imunológica"
+text = "Todos os personagens do jogo representam glóbulos brancos, células responsáveis pela proteção do organismo em situações de infecção. O jogo busca ilustrar, de maneira leve e divertida, como seria a rotina de defesa dessas células em meio a diferentes ameaças."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -65,7 +65,7 @@ offset_right = 436.0
 offset_bottom = 275.0
 theme_override_fonts/font = ExtResource("1_4kt4q")
 theme_override_font_sizes/font_size = 18
-text = "Os ataques dos personagens são baseados nas características funcionais dos glóbulos brancos. Mais adiante, será apresentada uma explicação detalhada sobre cada um desses ataques"
+text = "Cada ataque realizado pelos personagens se baseia nas funções reais dos glóbulos brancos — mais à frente, será detalhado como cada um deles foi adaptado para o universo do jogo."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

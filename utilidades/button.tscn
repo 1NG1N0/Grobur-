@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="1_1jiyg"]
 [ext_resource type="AudioStream" uid="uid://ciky6u6enjps1" path="res://utilidades/hover.wav" id="1_5q0en"]
-[ext_resource type="Script" path="res://utilidades/button.gd" id="1_8gsc1"]
+[ext_resource type="Script" uid="uid://c5uj40tp5vgsq" path="res://utilidades/button.gd" id="1_8gsc1"]
 [ext_resource type="AudioStream" uid="uid://br5oebb30l7wt" path="res://utilidades/click.wav" id="2_ou8er"]
 
 [node name="Button" type="Button"]

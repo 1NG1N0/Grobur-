@@ -8,6 +8,7 @@ var time = 0
 @export var experience = 1
 @export var enemy_damage = 1
 var knockback = Vector2.ZERO
+var separation: float
 @onready var Sprite = $Sprite2D
 @onready var animation = $AnimationPlayer
 @onready var snd_hit = $Enemy_hit
@@ -38,6 +39,7 @@ func _physics_process(_delta):
 		Sprite.flip_h = true
 	elif direction.x < -0.1:
 		Sprite.flip_h = false
+
 
 func death():
 	emit_signal("remove_from_array", self)

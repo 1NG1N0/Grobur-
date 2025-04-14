@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://d2nxpdfgajmrb"]
 
-[ext_resource type="Script" path="res://menu/menu.gd" id="1_6bwdg"]
+[ext_resource type="Script" uid="uid://dteb4oo8hjjb2" path="res://menu/menu.gd" id="1_6bwdg"]
 [ext_resource type="FontFile" uid="uid://bs8qhqjs8jqq" path="res://menu/upheavtt.ttf" id="1_hvd1c"]
 [ext_resource type="Texture2D" uid="uid://b7nwe1yw1dfpu" path="res://utilidades/background.png" id="2_iksx7"]
 [ext_resource type="Texture2D" uid="uid://cncxcnlh0tta2" path="res://menu/Keyboard Letters and Symbols.png" id="2_t1v2p"]

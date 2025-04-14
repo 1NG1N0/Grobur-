@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://cgf3544x67pdu"]
 
-[ext_resource type="Script" path="res://gripe/enemy.gd" id="1_6bldt"]
+[ext_resource type="Script" uid="uid://bf56a1fj7ltcx" path="res://gripe/enemy.gd" id="1_6bldt"]
 [ext_resource type="Texture2D" uid="uid://nqsodn128mb6" path="res://gripe/ratinhonho.png" id="2_bjrgj"]
 [ext_resource type="PackedScene" uid="uid://dbashnaipb56n" path="res://utilidades/hurtbox.tscn" id="3_ntb7k"]
 [ext_resource type="PackedScene" uid="uid://qinfld4ywmr6" path="res://utilidades/hit_box.tscn" id="4_n8ndx"]
@@ -44,8 +44,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uc5pb"]
 _data = {
-"RESET": SubResource("Animation_u1dmo"),
-"walk": SubResource("Animation_0gmj1")
+&"RESET": SubResource("Animation_u1dmo"),
+&"walk": SubResource("Animation_0gmj1")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3krd"]
@@ -60,7 +60,6 @@ script = ExtResource("1_6bldt")
 movement_speed = 15.0
 hp = 8
 knockback_recovery = 1.5
-experience = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1.192, 1.192)
@@ -74,7 +73,7 @@ shape = SubResource("CapsuleShape2D_pc6ng")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_uc5pb")
+&"": SubResource("AnimationLibrary_uc5pb")
 }
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_ntb7k")]

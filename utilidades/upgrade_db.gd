@@ -285,4 +285,36 @@ const UPGRADES = {
 		"prerequisite": ["nedlle3"],
 		"type": "weapon"
 	},
+	"whip1": {
+		"icon": WEAPON_PATH + "whip.png",
+		"displayname": "Chicote Imunológico",
+		"details": "Um chicote rápido que atinge inimigos próximos",
+		"level": "Level: 1",
+		"prerequisite": [],
+		"type": "weapon"
+	},
+	"whip2": {
+		"icon": WEAPON_PATH + "whip.png",
+		"displayname": "Chicote Imunológico",
+		"details": "O chicote causa +3 de dano e atinge mais inimigos",
+		"level": "Level: 2",
+		"prerequisite": ["whip1"],
+		"type": "weapon"
+	},
+	"whip3": {
+		"icon": WEAPON_PATH + "whip.png",
+		"displayname": "Chicote Imunológico",
+		"details": "Aumenta o alcance do chicote e reduz tempo de recarga",
+		"level": "Level: 3",
+		"prerequisite": ["whip2"],
+		"type": "weapon"
+	},
+	"whip4": {
+		"icon": WEAPON_PATH + "whip.png",
+		"displayname": "Chicote Imunológico",
+		"details": "O chicote ataca em ambos os lados e causa +5 dano",
+		"level": "Level: 4",
+		"prerequisite": ["whip3"],
+		"type": "weapon"
+	},
 }

@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://4biyktvspjaw"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_ypmda"]
+[ext_resource type="Script" uid="uid://dgyvje8u71krp" path="res://player/player.gd" id="1_ypmda"]
 [ext_resource type="Texture2D" uid="uid://blawm4fq54kdi" path="res://player/player_darwin.png" id="2_kwfw7"]
 [ext_resource type="PackedScene" uid="uid://dbashnaipb56n" path="res://utilidades/hurtbox.tscn" id="3_7nww2"]
 [ext_resource type="PackedScene" uid="uid://chf8nbleapfa7" path="res://utilidades/pause_menu.tscn" id="3_j5xo5"]
@@ -10,11 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://bnavco6dk00ig" path="res://objects/healthbar.png" id="7_cxsfu"]
 [ext_resource type="AudioStream" uid="uid://bfqdtuemqs158" path="res://objects/levelup(1).ogg" id="7_jxmwl"]
 [ext_resource type="Texture2D" uid="uid://l4hebf8n5q4u" path="res://objects/pixil-frame-0 (31).png" id="9_x0ouv"]
-[ext_resource type="Script" path="res://menu/selectmenu.gd" id="10_68pj2"]
+[ext_resource type="Script" uid="uid://cu8xe4tt7ijj6" path="res://menu/selectmenu.gd" id="10_68pj2"]
 [ext_resource type="AudioStream" uid="uid://bty0g6k6kuji8" path="res://utilidades/Victory.wav" id="10_cerbw"]
 [ext_resource type="AudioStream" uid="uid://bu55suw0mggff" path="res://utilidades/Lose.ogg" id="11_f6gji"]
 [ext_resource type="PackedScene" uid="uid://bo0c0vb6uvai" path="res://utilidades/button.tscn" id="12_05343"]
-[ext_resource type="Script" path="res://utilidades/Menupause.gd" id="15_glrjc"]
+[ext_resource type="Script" uid="uid://bfhjdjwqfclbl" path="res://utilidades/Menupause.gd" id="15_glrjc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iy27p"]
 radius = 17.4329
@@ -63,8 +63,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3ecyj"]
 _data = {
-"RESET": SubResource("Animation_7up08"),
-"_death": SubResource("Animation_cykum")
+&"RESET": SubResource("Animation_7up08"),
+&"_death": SubResource("Animation_cykum")
 }
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
@@ -161,7 +161,6 @@ vertical_alignment = 1
 [node name="LevelUp" type="Panel" parent="GUILayer/GUI"]
 unique_name_in_owner = true
 process_mode = 2
-visible = false
 layout_mode = 0
 offset_left = 800.0
 offset_top = 50.0
@@ -184,6 +183,7 @@ offset_left = 10.0
 offset_top = 50.0
 offset_right = 190.0
 offset_bottom = 100.0
+alignment = 1
 script = ExtResource("10_68pj2")
 
 [node name="snd_levelup" type="AudioStreamPlayer" parent="GUILayer/GUI/LevelUp"]
@@ -237,7 +237,7 @@ offset_left = 8.0
 offset_top = 24.0
 offset_right = 208.0
 offset_bottom = 40.0
-columns = 4
+columns = 5
 
 [node name="CollectedUpgrades" type="GridContainer" parent="GUILayer/GUI"]
 unique_name_in_owner = true
@@ -311,6 +311,12 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 wait_time = 0.025
 
+[node name="WhipTimer" type="Timer" parent="Attack"]
+unique_name_in_owner = true
+
+[node name="WhipTimerAttackTimer" type="Timer" parent="Attack/WhipTimer"]
+unique_name_in_owner = true
+
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 4
@@ -338,7 +344,7 @@ shape = SubResource("CircleShape2D_02gmu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_3ecyj")
+&"": SubResource("AnimationLibrary_3ecyj")
 }
 
 [node name="Timerdedano" type="Timer" parent="."]
@@ -354,6 +360,7 @@ wait_time = 0.05
 [connection signal="timeout" from="Attack/Blood_Clot_Timer/Blood_Clot_attack_timer" to="." method="_on_blood_clot_attack_timer_timeout"]
 [connection signal="timeout" from="Attack/NeddleTimer" to="." method="_on_neddle_timer_timeout"]
 [connection signal="timeout" from="Attack/NeddleTimer/NeddleTimerAttack" to="." method="_on_neddle_timer_attack_timeout"]
+[connection signal="timeout" from="Attack/WhipTimer" to="." method="_on_whip_timer_timeout"]
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
 [connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
 [connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
