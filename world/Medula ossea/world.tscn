@@ -117,6 +117,7 @@ stream = ExtResource("10_d1qr2")
 script = ExtResource("10_x2sqm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Ui_left" type="TouchScreenButton" parent="CanvasLayer"]
 visible = false

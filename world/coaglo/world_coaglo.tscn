@@ -111,6 +111,7 @@ process_mode = 3
 script = ExtResource("4_xbm4j")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Ui_left" type="TouchScreenButton" parent="CanvasLayer"]
 visible = false
