@@ -21,6 +21,8 @@ var last_movement = Vector2.UP
 var experience = 0
 var experience_level = 1
 var collected_experience = 0
+var enemies_defeated = 0
+var total_experience_earned = 0
 var time = 0 
 @onready var Sprite = $Sprite2D
 @onready var WalkTimer = get_node("%WalkTimer")
@@ -162,38 +164,37 @@ func _physics_process(_delta):
 
 func movement():
 	if not LevelPanel.visible:
-		var direction = joystick.posVector
-		if direction: 
-			velocity = direction * movement_speed
-		else: 
-			velocity = Vector2(0, 0)
-		if direction.x > 0:
-			Sprite.flip_h = true
-		elif direction.x < 0:
-			Sprite.flip_h = true
-	
-		var x_mov = Input.get_action_strength("rigth")  -  Input.get_action_strength("left")
-		var y_mov = Input.get_action_strength("down")  - Input.get_action_strength("up")
-		print(Input.get_action_strength("up"))
-		var mov = direction if direction != Vector2.ZERO else Vector2(x_mov, y_mov)
-		if mov.x > 0:
-			Sprite.flip_h = true
-		elif mov.x < 0:
-			Sprite.flip_h = false
+		var x_mov = Input.get_action_strength("rigth") - Input.get_action_strength("left")
+		var y_mov = Input.get_action_strength("down") - Input.get_action_strength("up")
+		var direction = Vector2(x_mov, y_mov)
 		
-	
-		if mov != Vector2.ZERO:
-			last_movement = mov
+		# Se houver input do joystick, ele sobrescreve o teclado (ou pode ser somado, mas geralmente sobrescreve)
+		if joystick and joystick.posVector != Vector2.ZERO:
+			direction = joystick.posVector.normalized()
+		
+		if direction.length() > 1:
+			direction = direction.normalized()
+		
+		velocity = direction * movement_speed
+		
+		if direction == Vector2.ZERO:
+			velocity = Vector2.ZERO
+			
+		move_and_slide()
+		
+		if direction != Vector2.ZERO:
+			last_movement = direction
+			if direction.x > 0:
+				Sprite.flip_h = true
+			elif direction.x < 0:
+				Sprite.flip_h = false
+				
 			if WalkTimer.is_stopped():
 				if Sprite.frame >= Sprite.hframes - 1:
 					Sprite.frame = 0
 				else: 
 					Sprite.frame = 1
 				WalkTimer.start()
-				
-		if mov != Vector2.ZERO:
-			velocity = mov.normalized()*movement_speed
-			move_and_slide()
 
 
 func _on_hurtbox_hurt(damage, _angle, _knockback):
@@ -216,16 +217,28 @@ func _on_bone_marrow_spear_timer_timeout():
 func _on_bone_marrow_spear_attack_timer_timeout():
 	if BoneMarrowSpear_ammo > 0:
 		var BoneMarrowSpear_attack = BoneMarrowSpear.instantiate()
-		BoneMarrowSpear_attack.position = position
-		BoneMarrowSpear_attack.target = get_random_target()
+		BoneMarrowSpear_attack.angle = global_position.direction_to(get_nearest_target())
 		BoneMarrowSpear_attack.level = BoneMarrowSpear_level
 		add_child(BoneMarrowSpear_attack)
+		BoneMarrowSpear_attack.global_position = global_position
 		BoneMarrowSpear_ammo -= 1
 		if BoneMarrowSpear_ammo > 0:
 			BoneMarrowSpearAttackTimer.start()
 		else:
 			BoneMarrowSpearAttackTimer.stop()
 		
+func get_nearest_target():
+	var nearest = null
+	var nearest_dist = INF
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		var d = global_position.distance_squared_to(enemy.global_position)
+		if d < nearest_dist:
+			nearest_dist = d
+			nearest = enemy
+	if nearest != null:
+		return nearest.global_position
+	return global_position + Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized()
+
 func get_random_target():
 	if enemy_close.size() > 0:
 		return enemy_close.pick_random().global_position
@@ -239,8 +252,7 @@ func _on_enemy_detection_area_body_entered(body):
 
 
 func _on_enemy_detection_area_body_exited(body):
-	if not enemy_close.has(body):
-		enemy_close.erase(body)
+	enemy_close.erase(body)
 
 
 func _on_blood_clot_timer_timeout():
@@ -290,6 +302,7 @@ func _on_collect_area_area_entered(area):
 func calculate_experience(gem_exp):
 	var exp_required = calculate_experiencecap()
 	collected_experience += gem_exp
+	total_experience_earned += gem_exp
 	if experience + collected_experience >= exp_required:
 		collected_experience -= exp_required-experience
 		experience_level += 1
@@ -363,7 +376,7 @@ func _input(event):
 			if options.size() > 0:
 				emit_signal("selected_upgrade", options[current_selection].item)
 	elif not get_tree().is_paused():  # Allow movement input only when the game is not paused
-		movement()
+		pass
 
 
 
@@ -377,9 +390,11 @@ func upgrade_character(upgrade):
 			Neddle_baseammo += 1
 		"neddle3":
 			Neddle_level = 3
+			Neddle_attackspeed -= 0.1
 		"neddle4":
 			Neddle_level = 4
 			Neddle_baseammo += 2
+			Neddle_attackspeed -= 0.1
 		"icespear1":
 			BoneMarrowSpear_level = 1
 			BoneMarrowSpear_baseammo += 1
@@ -525,28 +540,32 @@ func death():
 	var tween = deathPanel.create_tween()
 	tween.tween_property(deathPanel, "position", Vector2(220,50), 3.0).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	tween.play()
+	
+	var result_text = ""
 	match player_dificulty:
 		"Facil":
 			if time >= 600:
-				lbl_Result.text = str("YOU WIN!!!!!!!!")
+				result_text = "YOU WIN!!!!!!!!"
 				snd_Victory.play()
 			else:
-				lbl_Result.text = str("you lose")
+				result_text = "you lose"
 				snd_Lose.play()
 		"Mid":
 			if time >= 1200:
-				lbl_Result.text = str("YOU WIN!!!!!!!!")
+				result_text = "YOU WIN!!!!!!!!"
 				snd_Victory.play()
 			else:
-				lbl_Result.text = str("you lose")
+				result_text = "you lose"
 				snd_Lose.play()
 		"Extreme":
 			if time >= 1800:
-				lbl_Result.text = str("YOU WIN!!!!!!!!")
+				result_text = "YOU WIN!!!!!!!!"
 				snd_Victory.play()
 			else:
-				lbl_Result.text = str("you lose")
+				result_text = "you lose"
 				snd_Lose.play()
+	
+	lbl_Result.text = str(result_text, "\nKills: ", enemies_defeated, "\nXP: ", total_experience_earned)
 func _on_button_click_end():
 	get_tree().paused = false
 	var _level = get_tree().change_scene_to_file("res://menu.tscn")
@@ -561,8 +580,8 @@ func _on_neddle_timer_attack_timeout():
 	if Neddle_ammo > 0:
 		var Neddle_attack = needle.instantiate()
 		Neddle_attack.position = position
-		Neddle_attack.target = get_random_target()
-		Neddle_attack.level = BoneMarrowSpear_level
+		Neddle_attack.angle = global_position.direction_to(get_nearest_target())
+		Neddle_attack.level = Neddle_level
 		add_child(Neddle_attack)
 		Neddle_ammo -= 1
 		if Neddle_ammo > 0:

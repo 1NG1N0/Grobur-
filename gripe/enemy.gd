@@ -25,6 +25,7 @@ signal remove_from_array(object)
 
 
 func _ready():
+	add_to_group("enemies")
 	animation.play("walk")
 	hitBox.damage = enemy_damage
 
@@ -43,6 +44,8 @@ func _physics_process(_delta):
 
 func death():
 	emit_signal("remove_from_array", self)
+	if player:
+		player.enemies_defeated += 1
 	var enemy_death = anim_death.instantiate()
 	enemy_death.scale = Sprite.scale
 	enemy_death.global_position = global_position
